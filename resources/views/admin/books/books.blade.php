@@ -43,19 +43,39 @@
                                         <label class="col-md-4 p-0">Image</label>
                                         <input type="file" name="image"  class="form-control p-0 border-"> 
                                     <div class="form-group mb-4">
-                                        <label for="example-email" class="col-md-12 p-0">Name</label>
+                                        <label  class="col-md-12 p-0">Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="" class="form-control p-0 border-0" name="name" id="example-email">
+                                            <input type="text"  class="form-control p-0 border-0" name="name" >
                                         </div>
-                                        {{-- <div class="col-md-12 border-bottom p-0">
-                                            <select name="category_id" id="">
-                                            </select>
-                                        </div> --}}
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Writer</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text"  class="form-control p-0 border-0" name="writer" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Year</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="number"  class="form-control p-0 border-0" name="year" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Language</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text"  class="form-control p-0 border-0" name="language" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Pages</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="number"  class="form-control p-0 border-0" name="pages" >
+                                        </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Category</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <select name="category_id" id="">
+                                            <select name="category_id">
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
@@ -80,6 +100,10 @@
                                         <tr>
                                             <th class="border-top-0">Image</th>
                                             <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Writer</th>
+                                            <th class="border-top-0">Language</th>
+                                            <th class="border-top-0">Year</th>
+                                            <th class="border-top-0">Pages</th>
                                             <th class="border-top-0">Category</th>
                                             <th class="border-top-0">Action</th>
  
@@ -91,13 +115,18 @@
                                              <tr>  
 
                                             <td><img style="width: 80px" src="{{asset($book->image)}}"></td>
+                                            <td>{{$book->image}}</td>
                                             <td>{{$book->name}}</td>
-                                            <td>{{$book->category->name}}</td>
+                                            <td>{{$book->writer}}</td>
+                                            <td>{{$book->language}}</td>
+                                            <td>{{$book->year}}</td>
+                                            <td>{{$book->pages}}</td>
+                                            <td>{{$book->category_id}}</td>
                                             <td>
-                                                <form action="{{ route('books.edit',$book->id) }}">
+                                                <form action="{{ route('book.edit',$book->id) }}">
                                                     <button type="submit">Edit</button>
                                                 </form>
-                                                <form action="{{ route('books.delete',$book->id) }}">
+                                                <form action="{{ route('book.delete',$book->id) }}">
                                                     <button type="submit">Delete</button>
                                                 </form>
                                             </td>

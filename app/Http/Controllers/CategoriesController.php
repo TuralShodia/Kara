@@ -9,17 +9,13 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
 {
-    public function category(){
-        $category= new Category();
-        $categories= $category::all();
+    public function index(){
+        $categories= Category::all();
         return view('admin/categories/categories',compact('categories'));
     }  
-    public function insert(Request $req){ 
+    public function store(Request $req){ 
 
-        $categories = new Category();
-        $categories->name = $req->name;
-        $categories->category_id = $req->category_id;
-        $categories->save();
+        Category::create($req->all());
         return redirect()->route('categories');
 
     }
@@ -29,10 +25,8 @@ class CategoriesController extends Controller
         return view('admin/categories/update',compact('categories'));
     }
     public function update($id, Request $req){
-        $data=[
-            'name'=>$req->name,
-        ];
-        $validator=Validator::make($data,[
+
+        $validator=Validator::make($req->name,[
             'name'=>'required',            
         ]);
         if($validator->fails()){

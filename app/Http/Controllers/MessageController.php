@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class MessageController extends Controller
 {
     public function frontmessage(Request $req){
-        $data=$req->all();
-        $validator=Validator::make($data,[
+        $validator=Validator::make($req->all(),[
             'name'=>'required',
             'surname'=>'required',
             'phone'=>'required',
@@ -20,11 +19,11 @@ class MessageController extends Controller
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
-
+            
         }
-        Message::create($data);
+        Message::create($req->all());
         return redirect()->route('contact');
-    }public function message(){
+    }public function index(){
         $messages=Message::all();
         return view('admin/message',compact('messages'));
     }

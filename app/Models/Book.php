@@ -9,9 +9,10 @@ class Book extends Model
 {
 protected $fillable = [
         'name',
-        'lang',
+        'language',
         'image',
         'year',
+        'writer',
         'language',
         'pages',
         'category_id'

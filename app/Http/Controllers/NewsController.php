@@ -11,18 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
 {
-    public function info(){
+    public function index(){
         $news= new News();
         $allnews= $news::all();
         return view('admin/info/info',compact('allnews'));
     }  
-    public function insert(Request $req){ 
-        $data=[
-            'name'=>$req->name,
-            'title'=>$req->title,
-            'image'=>$req->image
-        ];
-        $validator=Validator::make($data,[
+    public function store(Request $req){ 
+        
+        $validator=Validator::make($req->all(),[
             'name'=>'required',
             'title'=>'required',
             'image'=>'required| mimes:png,jpg'
@@ -32,7 +28,7 @@ class NewsController extends Controller
         }
         $news = new News();
         
-        if($req->has('image')){
+        if($req->hasFile('image')){
             $ext=$req->image->extension();
             $filename=rand(1,100).time().'.'. $ext ;
             $fileNamewithUpload = "images/".$filename;
@@ -52,12 +48,8 @@ class NewsController extends Controller
         return view('admin/info/update',compact('news'));
     }
     public function update($id, Request $req){
-        $data=[
-            'name'=>$req->name,
-            'title'=>$req->title,
-            'image'=>$req->image
-        ];
-        $validator=Validator::make($data,[
+        
+        $validator=Validator::make($req->all(),[
             'name'=>'required',
             'title'=>'required',
             'image'=>'mimes:png,jpg'
@@ -69,7 +61,7 @@ class NewsController extends Controller
         
         $news = News::find($id);
 
-        if($req->has('image')){
+        if($req->hasFile('image')){
             $ext=$req->image->extension();
             $filename=rand(1,100).time().'.'. $ext ;
             $fileNamewithUpload = "product/".$filename;

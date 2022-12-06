@@ -41,7 +41,7 @@
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
                             </div> --}}
                             <div class="form-group form-button">
-                                <button type="submit" name="signin" id="signin" class="form-submit" value="Log in">Log in </button>
+                                <button type="submit"  class="form-submit" value="Log in">Log in </button>
                             </div>
                             @if (session('danger'))
                                <div style="color: red">{{session('danger')}}</div> 

@@ -9,18 +9,14 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
 
-    public function edit()
+    public function index()
     {
         return view('admin/profile/profile');
     }
     public function update(Request $req){
         
-        $data=[
-            'name'=>$req->name,
-            'email'=>$req->email,
-            'password'=>$req->password,
-        ];
-        $validator=Validator::make($data,[
+        
+        $validator=Validator::make($req->all(),[
             'name'=>'required',
             'email'=>'required|email',
             'password'=>'',
@@ -32,7 +28,9 @@ class ProfileController extends Controller
         }
         
         $user = Auth::user();
+        if($req->password){
             $user->password = $req->password;
+        }
             $user->email = $req->email;
             $user->name = $req->name;
             $user->save();

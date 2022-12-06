@@ -10,40 +10,41 @@ use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
-    public function book(){
+    public function index(){
         $categories=Category::orderBy('id')->get();
-        $book= new Book();
-        $books= $book::all();
+        $books= Book::all();
         return view('admin/books/books',compact('books','categories'));
     }  
-    public function insert(Request $req){ 
-        $data=$req->all();
-        $validator=Validator::make($data,[
+    public function store(Request $req){ 
+        
+        $validator=Validator::make($req->all(),[
             'name'=>'required',
-            'image'=>'required| mimes:png,jpg',
+            'language'=>'required',
+            'image'=>'required',
+            'writer'=>'required',
+            'year'=>'required',
+            'language'=>'required',
+            'pages'=>'required',
             'category_id'=>'required'
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator);
 
         }
-        // $book = new book();
+
         
-        if($req->has('image')){
+        if($req->hasFile('image')){
             $ext=$req->image->extension();
             $filename=rand(1,100).time().'.'. $ext ;
             $fileNamewithUpload = "book/".$filename;
             $req->image->move('book'  , $filename);
             $data['image'] = $fileNamewithUpload;
-            // $book->image=$fileNamewithUpload;
         }
 
-        Book::create($data);
+        Book::create($req->all());
         
-        // $book->name = $req->name;
-        // $book->save();
+
         
- 
         return redirect()->route('book');
     }
     
@@ -56,14 +57,19 @@ public function edit($id)
 
 public function update(Request $req, $id)
 {
-    $data=[
-        'name'=>$req->name,
-        'image'=>$req->image,
-    ];
+    $data=$req->all();
 
     $validator =Validator::make($data,
     [
         'name'=>'required',
+        'language'=>'required',
+        'image'=>'required',
+        'writer'=>'required',
+        '`year`'=>'required',
+        '`language`'=>'required',
+        'pages'=>'required',
+        'category_id'=>'required'
+
     ]);
     $validate=Validator::make( $data,[
         'image'=>'mimes:jpg,png',
@@ -78,7 +84,7 @@ public function update(Request $req, $id)
     if($validate->fails()){
         return redirect()->back()->withErrors($validate);
     }
-    if($req->has('image')){
+    if($req->hasFile('image')){
         $ext=$req->image->extension();
         $filename=rand(1,100).time().'.'. $ext ;
         $fileNamewithUpload = "book/".$filename;
@@ -89,9 +95,12 @@ public function update(Request $req, $id)
         //     File::delete($books->image);
         // }
     }
-        
-        $books->name=$req->name;
-        $books->save();
+    Book::create($data);
+        // $books->writer=$req->writer;
+        // $books->pages=$req->pages;
+        // $books->year=$req->year;
+        // $books->name=$req->name;
+        // $books->save();
 
        
         return redirect()->back();

@@ -19,7 +19,7 @@ class AuthController extends Controller
             'password'=>'required'
         ]);
         if(!Auth::attempt(['name'=>$request->name,'password'=>$request->password])) {
-                 return redirect()->back()->with('danger','name or password incorrect');
+            return redirect()->back()->with('danger','name or password incorrect');
         }
 
         return redirect()->route('dashboard');  
