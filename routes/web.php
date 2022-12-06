@@ -2,9 +2,12 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\admin\BookController;
+use App\Http\Controllers\admin\NewsController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\MessageController;
+use App\Http\Controllers\admin\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +27,9 @@ Route::group(['prefix'=>'/admin'], function(){
       Route::post('/register', 'App\Http\Controllers\AuthController@registersubmit')->name('register.submit');
     });
       Route::group(['middleware'=>'noLogin'], function(){
-          Route::get('/dashboard','App\Http\Controllers\AdminController@index')->name('dashboard');
+          Route::get('/dashboard',function(){
+              return view('admin/dashboard'); 
+            })->name('dashboard');
 
 
           Route::get('/profile/edit','App\Http\Controllers\ProfileController@index')->name('profile');
@@ -44,18 +49,18 @@ Route::group(['prefix'=>'/admin'], function(){
           Route::get('/contacts/edit',[ContactController::class, 'index'])->name('contacts');
           Route::post('/contacts/update/{id}',[ContactController::class, 'update'])->name('contacts.update');
   
-          Route::get('/categories','App\Http\Controllers\CategoriesController@index')->name('categories');
-          Route::post('/categories','App\Http\Controllers\CategoriesController@store')->name('categories.submit');
-          Route::get('/categories/edit/{id}','App\Http\Controllers\CategoriesController@edit')->name('categories.edit');
-          Route::post('/categories/update/{id}','App\Http\Controllers\CategoriesController@update')->name('categories.update');
-          Route::get('/categories/delete/{id}','App\Http\Controllers\CategoriesController@delete')->name('categories.delete');
+          Route::get('/categories',[CategoriesController::class, 'index'])->name('categories');
+          Route::post('/categories',[CategoriesController::class, 'store'])->name('categories.submit');
+          Route::get('/categories/edit/{id}',[CategoriesController::class, 'edit'])->name('categories.edit');
+          Route::post('/categories/update/{id}',[CategoriesController::class, 'update'])->name('categories.update');
+          Route::get('/categories/delete/{id}',[CategoriesController::class, 'delete'])->name('categories.delete');
   
   
-          Route::get('/book','App\Http\Controllers\BookController@index')->name('book');
-          Route::post('/book/submit','App\Http\Controllers\BookController@store')->name('book.submit');
-          Route::get('/book/edit/{id}','App\Http\Controllers\BookController@edit')->name('book.edit');
-          Route::post('/book/update/{id}','App\Http\Controllers\BookController@update')->name('book.update');
-          Route::get('/book/delete/{id}','App\Http\Controllers\BookController@delete')->name('book.delete');
+          Route::get('/book',[BookController::class, 'index'])->name('book');
+          Route::post('/book/submit',[BookController::class, 'store'])->name('book.submit');
+          Route::get('/book/edit/{id}',[BookController::class, 'edit'])->name('book.edit');
+          Route::post('/book/update/{id}',[BookController::class, 'update'])->name('book.update');
+          Route::get('/book/delete/{id}',[BookController::class, 'delete'])->name('book.delete');
   
           Route::get('/message/delete/{id}',[MessageController::class, 'delete'])->name('message.delete');
       
