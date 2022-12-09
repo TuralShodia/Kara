@@ -16,7 +16,7 @@ class AuthController extends Controller
         //     'name'=>'required',
         //     'password'=>'required'
         // ]);
-        $auth=!Auth::attempt([$req->only('name','password')]) ;
+        $auth=!Auth::attempt($req->only(['name','password'])) ;
         if($auth) {
             return redirect()->back()->with('danger','name or password incorrect');
         }
