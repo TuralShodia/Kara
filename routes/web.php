@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\MessageController;
 use App\Http\Controllers\admin\CategoriesController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,24 +22,21 @@ use App\Http\Controllers\admin\CategoriesController;
 */
 Route::group(['prefix'=>'/admin'], function(){
     Route::group(['middleware'=>'isLogin'], function(){
-      Route::get('/','App\Http\Controllers\AuthController@index')->name('login');
-      Route::post('/','App\Http\Controllers\AuthController@login')->name('login.submit');
-      Route::get('/register','App\Http\Controllers\AuthController@register')->name('register');
-      Route::post('/register', 'App\Http\Controllers\AuthController@registersubmit')->name('register.submit');
+      Route::get('/',[AuthController::class, 'index'])->name('login');
+      Route::post('/',[AuthController::class, 'login'])->name('login.submit');
+      Route::get('/register',[AuthController::class, 'register'])->name('register');
+      Route::post('/register', [AuthController::class, 'resgistersubmit'])->name('register.submit');
     });
       Route::group(['middleware'=>'noLogin'], function(){
-          Route::get('/dashboard',function(){
-              return view('admin/dashboard'); 
-            })->name('dashboard');
+          Route::get('/dashboard',function(){return view('admin/dashboard');})->name('dashboard');
 
-
-          Route::get('/profile/edit','App\Http\Controllers\ProfileController@index')->name('profile');
-          Route::post('/profile/update','App\Http\Controllers\ProfileController@update')->name('profile.update');
+          Route::get('/profile/edit',[ProfileController::class, 'index'])->name('profile');
+          Route::post('/profile/update',[ProfileController::class, 'update'])->name('profile.update');
   
   
-          Route::get('/logout','App\Http\Controllers\AuthController@logout')->name('logout');
+          Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
   
-          Route::get('/message','App\Http\Controllers\MessageController@index')->name('message');
+          Route::get('/message',[MessageController::class,'index'])->name('message');
   
           Route::get('/info',[NewsController::class, 'index'])->name('info');
           Route::post('/info',[NewsController::class, 'store'])->name('info.submit');

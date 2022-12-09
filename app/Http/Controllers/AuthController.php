@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-
 
 class AuthController extends Controller
 {
@@ -13,12 +11,13 @@ class AuthController extends Controller
     public function index(){
         return view('auth/login');
     }  
-    public function login(Request $request){
-        $this->validate($request, [
-            'name'=>'required',
-            'password'=>'required'
-        ]);
-        if(!Auth::attempt(['name'=>$request->name,'password'=>$request->password])) {
+    public function login(LoginRequest $request){
+        // $this->validate($request, [
+        //     'name'=>'required',
+        //     'password'=>'required'
+        // ]);
+        $auth=!Auth::attempt(request) ;
+        if($auth) {
             return redirect()->back()->with('danger','name or password incorrect');
         }
 

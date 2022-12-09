@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class NewsController extends Controller
 {
     public function index(){
-        $news= new News();
-        $allnews= $news::all();
+        $allnews= News::all();
         return view('admin/info/info',compact('allnews'));
     }  
     public function store(Request $req){ 
