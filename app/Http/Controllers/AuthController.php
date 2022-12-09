@@ -11,12 +11,12 @@ class AuthController extends Controller
     public function index(){
         return view('auth/login');
     }  
-    public function login(LoginRequest $request){
+    public function login(LoginRequest $req){
         // $this->validate($request, [
         //     'name'=>'required',
         //     'password'=>'required'
         // ]);
-        $auth=!Auth::attempt(request) ;
+        $auth=!Auth::attempt([$req->only('name','password')]) ;
         if($auth) {
             return redirect()->back()->with('danger','name or password incorrect');
         }

@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\BookController;
 use App\Http\Controllers\admin\NewsController;
 use App\Http\Controllers\admin\AdminController;
@@ -22,7 +23,7 @@ use App\Http\Controllers\admin\CategoriesController;
 */
 Route::group(['prefix'=>'/admin'], function(){
     Route::group(['middleware'=>'isLogin'], function(){
-      Route::get('/',[AuthController::class, 'index'])->name('login');
+      Route::get('/',[AuthContr]oller::class, 'index'])->name('login');
       Route::post('/',[AuthController::class, 'login'])->name('login.submit');
       Route::get('/register',[AuthController::class, 'register'])->name('register');
       Route::post('/register', [AuthController::class, 'resgistersubmit'])->name('register.submit');
