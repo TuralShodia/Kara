@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use Throwable;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class ContactController extends Controller
 {
@@ -37,16 +37,7 @@ class ContactController extends Controller
         }
         
         $contacts = Contact::find($id);
-
-            $contacts->address = $req->address;
-            $contacts->phone = $req->phone;
-            $contacts->phone2 = $req->phone2;
-            $contacts->email = $req->email;
-            $contacts->facebook_link = $req->facebook_link;
-            $contacts->whatsapp_link = $req->whatsapp_link;
-            $contacts->instagram_link = $req->instagram_link;
-            $contacts->save();
-
+            $contacts->update($req->all());
             return redirect()->back()->with('success','updated successfully');
        
     }

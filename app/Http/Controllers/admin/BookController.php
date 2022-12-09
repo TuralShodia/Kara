@@ -17,14 +17,13 @@ class BookController extends Controller
         return view('admin/books/books',compact('books','categories'));
     }  
     public function store(Request $req){ 
-        
+        $data=$req->all();
         $validator=Validator::make($req->all(),[
             'name'=>'required',
             'language'=>'required',
             'image'=>'required',
             'writer'=>'required',
             'year'=>'required',
-            'language'=>'required',
             'pages'=>'required',
             'category_id'=>'required'
         ]);
@@ -39,10 +38,10 @@ class BookController extends Controller
             $filename=rand(1,100).time().'.'. $ext ;
             $fileNamewithUpload = "book/".$filename;
             $req->image->move('book'  , $filename);
-            $data['image'] = $fileNamewithUpload;
+            $data['image']= $fileNamewithUpload;
         }
 
-        Book::create($req->all());
+        Book::create($data);
         
 
         
@@ -51,9 +50,9 @@ class BookController extends Controller
     
 public function edit($id)
 {
-    $books=Book::findOrFail($id);
+    $book=Book::findOrFail($id);
 
-    return view('admin/books/update',compact('books'));
+    return view('admin/books/update',compact('book'));
 }
 
 public function update(Request $req, $id)
@@ -72,19 +71,12 @@ public function update(Request $req, $id)
         'category_id'=>'required'
 
     ]);
-    $validate=Validator::make( $data,[
-        'image'=>'mimes:jpg,png',
-    ]);
     if($validator->fails()){
         return redirect()->back()->withErrors($validator);
     }
 
     $books=Book::findOrFail($id);
 
-
-    if($validate->fails()){
-        return redirect()->back()->withErrors($validate);
-    }
     if($req->hasFile('image')){
         $ext=$req->image->extension();
         $filename=rand(1,100).time().'.'. $ext ;

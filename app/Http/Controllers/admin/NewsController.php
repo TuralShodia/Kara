@@ -5,9 +5,7 @@ namespace App\Http\Controllers\admin;
 use Throwable;
 use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class NewsController extends Controller
