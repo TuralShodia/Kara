@@ -6,6 +6,7 @@ use Throwable;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
@@ -14,7 +15,7 @@ class CategoriesController extends Controller
         $categories= Category::all();
         return view('admin/categories/categories',compact('categories'));
     }  
-    public function store(Request $req){ 
+    public function store(CategoryRequest $req){ 
 
         Category::create($req->all());
         return redirect()->route('categories');
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
         $categories=Category::findOrFail($id);
         return view('admin/categories/update',compact('categories'));
     }
-    public function update($id, Request $req){
+    public function update($id, CategoryRequest $req){
 
         $validator=Validator::make($req->name,[
             'name'=>'required',            

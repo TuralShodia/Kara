@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+
 
 class ProfileController extends Controller
 {
@@ -14,19 +14,7 @@ class ProfileController extends Controller
     {
         return view('admin/profile/profile');
     }
-    public function update(Request $req){
-        
-        
-        $validator=Validator::make($req->all(),[
-            'name'=>'required',
-            'email'=>'required|email',
-            'password'=>'',
-        ]);
-        
-
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
+    public function update(ProfileRequest $req){
         
         $user = Auth::user();
         if($req->password){

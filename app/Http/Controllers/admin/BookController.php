@@ -5,9 +5,10 @@ namespace App\Http\Controllers\admin;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\Controller;
 
 class BookController extends Controller
 {
@@ -16,23 +17,8 @@ class BookController extends Controller
         $books= Book::all();
         return view('admin/books/books',compact('books','categories'));
     }  
-    public function store(Request $req){ 
-        $data=$req->all();
-        $validator=Validator::make($req->all(),[
-            'name'=>'required',
-            'language'=>'required',
-            'image'=>'required',
-            'writer'=>'required',
-            'year'=>'required',
-            'pages'=>'required',
-            'category_id'=>'required'
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-
-        }
-
-        
+    public function store(BookRequest $req){ 
+       $data=$req->all();
         if($req->hasFile('image')){
             $ext=$req->image->extension();
             $filename=rand(1,100).time().'.'. $ext ;
@@ -40,11 +26,7 @@ class BookController extends Controller
             $req->image->move('book'  , $filename);
             $data['image']= $fileNamewithUpload;
         }
-
         Book::create($data);
-        
-
-        
         return redirect()->route('book');
     }
     

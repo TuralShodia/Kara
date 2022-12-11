@@ -4,9 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use Throwable;
 use App\Models\News;
-use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+
 
 class NewsController extends Controller
 {
@@ -14,16 +14,9 @@ class NewsController extends Controller
         $allnews= News::all();
         return view('admin/info/info',compact('allnews'));
     }  
-    public function store(Request $req){ 
+    public function store(NewsRequest $req){ 
         
-        $validator=Validator::make($req->all(),[
-            'name'=>'required',
-            'title'=>'required',
-            'image'=>'required| mimes:png,jpg'
-        ]);
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
+
         $news = new News();
         
         if($req->hasFile('image')){
@@ -45,17 +38,17 @@ class NewsController extends Controller
         $news=News::findOrFail($id);
         return view('admin/info/update',compact('news'));
     }
-    public function update($id, Request $req){
+    public function update($id, NewsRequest $req){
         
-        $validator=Validator::make($req->all(),[
-            'name'=>'required',
-            'title'=>'required',
-            'image'=>'mimes:png,jpg'
-        ]);
+        // $validator=Validator::make($req->all(),[
+        //     'name'=>'required',
+        //     'title'=>'required',
+        //     'image'=>'mimes:png,jpg'
+        // ]);
 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator);
-        }
+        // if($validator->fails()){
+        //     return redirect()->back()->withErrors($validator);
+        // }
         
         $news = News::find($id);
 
