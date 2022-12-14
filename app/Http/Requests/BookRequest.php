@@ -24,7 +24,14 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            
+        'name'=>'required',
+        'language'=>'required',
+        'image'=>'required| mimes:png,jpg',
+        'writer'=>'required',
+        'year'=>'required',
+        'language'=>'required',
+        'pages'=>'required',
+        'category_id'=>'required'
         ];
     }
 }

@@ -89,7 +89,7 @@
                                             <form action="{{route('categories.edit',$category->id)}}">
                                                 <td><button>Edit</button></td>
                                             </form>
-                                            <form action="">
+                                            <form action="{{route('categories.delete',$category->id)}}">
                                                 <td><button>Delete</button></td>
                                             </form>
                                             

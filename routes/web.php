@@ -3,13 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\admin\ProfileController;
-use App\Http\Controllers\admin\BookController;
-use App\Http\Controllers\admin\NewsController;
-use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\{ProfileController,BookController,NewsController,ContactController,CategoriesController};  
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\admin\CategoriesController;
-
 
 /*
 |--------------------------------------------------------------------------

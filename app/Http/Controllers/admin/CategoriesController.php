@@ -4,10 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use Throwable;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
-use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
 {
@@ -28,18 +26,10 @@ class CategoriesController extends Controller
     }
     public function update($id, CategoryRequest $req){
 
-        $validator=Validator::make($req->name,[
-            'name'=>'required',            
-        ]);
-        if($validator->fails()){
-           
-            return redirect()->back()->withErrors($validator);
-        }
         $categories = Category::find($id);
-        
+        $data=$req->only(['name']);
         try {
-            $categories->name = $req->name;
-            $categories->save();
+            $categories->update($data);
             return redirect()->back()->with('success','updated successfully');
         } catch (Throwable $e) {
             report($e);

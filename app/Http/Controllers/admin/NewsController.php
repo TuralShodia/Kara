@@ -39,35 +39,22 @@ class NewsController extends Controller
         return view('admin/info/update',compact('news'));
     }
     public function update($id, NewsRequest $req){
-        
-        // $validator=Validator::make($req->all(),[
-        //     'name'=>'required',
-        //     'title'=>'required',
-        //     'image'=>'mimes:png,jpg'
-        // ]);
-
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator);
-        // }
-        
-        $news = News::find($id);
+        $data=$req->all();
+        $news = News::findOrFail($id);
 
         if($req->hasFile('image')){
             $ext=$req->image->extension();
             $filename=rand(1,100).time().'.'. $ext ;
             $fileNamewithUpload = "product/".$filename;
             $req->image->move('product'  , $filename);
-            $news->image=$fileNamewithUpload;
+            $data['image']=$fileNamewithUpload;
             // if(File::exists($products->image))
             // {
             //     File::delete($products->image);
             // }
         }
         try {
-            $news->title = $req->title;
-            $news->name = $req->name;
-            $news->save();
-
+            $news->update($data);
             return redirect()->back()->with('success','updated successfully');
         } catch (Throwable $e) {
             report($e);

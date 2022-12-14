@@ -35,7 +35,7 @@ class ContactController extends Controller
         // }
         
         $contacts = Contact::find($id);
-            $contacts->update($req->all());
+            $contacts->update($req->only(['phone','phone2','address','email',' facebook_link',' instagram_link',' whatsapp_link']));
             return redirect()->back()->with('success','updated successfully');
        
     }

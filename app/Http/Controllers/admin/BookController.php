@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Book;
-use App\Models\Category;
-use Illuminate\Http\Request;
+use Throwable;
+use App\Models\{Book,Category};
 use App\Http\Requests\BookRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
@@ -26,37 +24,28 @@ class BookController extends Controller
             $req->image->move('book'  , $filename);
             $data['image']= $fileNamewithUpload;
         }
-        Book::create($data);
-        return redirect()->route('book');
+        try {
+            Book::create($data);
+    
+            return redirect()->back();
+        }catch (Throwable $e) {
+            report($e);
+            return false;
+            }
+            return redirect()->back();
     }
     
 public function edit($id)
 {
     $book=Book::findOrFail($id);
+    $categories=Category::all();
 
-    return view('admin/books/update',compact('book'));
+    return view('admin/books/update',compact('book','categories'));
 }
 
-public function update(Request $req, $id)
+public function update($id, BookRequest $req)
 {
     $data=$req->all();
-
-    $validator =Validator::make($data,
-    [
-        'name'=>'required',
-        'language'=>'required',
-        'image'=>'required',
-        'writer'=>'required',
-        '`year`'=>'required',
-        '`language`'=>'required',
-        'pages'=>'required',
-        'category_id'=>'required'
-
-    ]);
-    if($validator->fails()){
-        return redirect()->back()->withErrors($validator);
-    }
-
     $books=Book::findOrFail($id);
 
     if($req->hasFile('image')){
@@ -64,21 +53,19 @@ public function update(Request $req, $id)
         $filename=rand(1,100).time().'.'. $ext ;
         $fileNamewithUpload = "book/".$filename;
         $req->image->move('book'  , $filename);
-        $books->image=$fileNamewithUpload;
+        $data['image']=$fileNamewithUpload;
         // if(File::exists($books->image))
         // {
         //     File::delete($books->image);
         // }
-    }
-    Book::create($data);
-        // $books->writer=$req->writer;
-        // $books->pages=$req->pages;
-        // $books->year=$req->year;
-        // $books->name=$req->name;
-        // $books->save();
+    }try {
+        $books->update($data);
 
-       
         return redirect()->back();
+    }catch (Throwable $e) {
+        report($e);
+        return false;
+        }
     
 }
 public function delete($id)

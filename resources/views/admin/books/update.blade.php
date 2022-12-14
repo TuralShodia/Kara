@@ -38,7 +38,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action='{{route('book.submit')}}' enctype="multipart/form-data" class="form-horizontal form-material">
+                                <form method="POST" action='{{route('book.update',$book->id)}}' enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Image</label>
@@ -77,10 +77,23 @@
                                             <input type="number" value="{{$book->pages}}"  class="form-control p-0 border-0" name="pages" >
                                         </div>
                                     </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Category</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <select name="category_id">
+                                                @foreach($categories as $category)
+                                                    @if ($book->category_id==$category->id)
+                                                        <option selected  value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @else
+                                                        <option  value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                    </div>
                                
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button type="submit" class="btn btn-success">Add book</button>
+                                            <button type="submit" class="btn btn-success">Update book</button>
                                         </div>
                                     </div>
                                 </form>

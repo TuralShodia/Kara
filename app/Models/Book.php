@@ -13,10 +13,11 @@ protected $fillable = [
         'image',
         'year',
         'writer',
-        'language',
         'pages',
         'category_id'
     ];
     use HasFactory;
-    
+    public function category(){
+        return $this->belongsTo(\App\Models\Category::class,'category_id');
+    }
 }
