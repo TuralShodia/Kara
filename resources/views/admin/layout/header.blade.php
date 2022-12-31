@@ -11,8 +11,6 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('adminn/plugins/images/favicon.png')}}">
     <!-- Custom CSS -->
@@ -102,8 +100,8 @@
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="{{route('profile')}}">
-                                <img src="adminn/plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                                <img src="{{asset('adminn/plugins/images/users/varun.jpg')}}" alt="user-img" width="36"
+                                    class="img-circle"><span class="text-white font-medium">{{Auth::user()->name}}</span></a>
                         </li>
                         <li>
                             <button style="color:red">

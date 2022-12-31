@@ -25,13 +25,14 @@ class BookRequest extends FormRequest
     {
         return [
         'name'=>'required',
-        'language'=>'required',
-        'image'=>'required| mimes:png,jpg',
+        'image'=>'required|mimes:png,jpg',
         'writer'=>'required',
         'year'=>'required',
         'language'=>'required',
         'pages'=>'required',
-        'category_id'=>'required'
+        'category_id'=>'required',
+        'description'=>'required'
         ];
     }
+    
 }

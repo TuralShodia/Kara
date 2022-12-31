@@ -12,10 +12,6 @@ class AuthController extends Controller
         return view('auth/login');
     }  
     public function login(LoginRequest $req){
-        // $this->validate($request, [
-        //     'name'=>'required',
-        //     'password'=>'required'
-        // ]);
         $auth=!Auth::attempt($req->only(['name','password'])) ;
         if($auth) {
             return redirect()->back()->with('danger','name or password incorrect');
@@ -31,19 +27,7 @@ class AuthController extends Controller
     public function register(){
         return view('auth/register');
     }  
-    public function registersubmit(){
-        $this->validate(request(), [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-        
-        $user = User::create(request(['name', 'email', 'password']));
-        
-        auth()->login($user);
-        
-        return redirect()->route('dashboard');
-    }
+  
     public function read(){
         $users= User::latest()->paginate(5);
         return view('table');

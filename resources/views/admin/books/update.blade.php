@@ -1,4 +1,4 @@
-@extends('admin/layout/master')
+@extends('admin.layout.master')
 @section('content')
 
         <!-- ============================================================== -->
@@ -11,7 +11,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Admin/books</h4>
+                        <h4 class="page-title">Admin/Books/Update</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -44,7 +44,7 @@
                                         <label class="col-md-12 p-0">Image</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <img style="width: 80px" src="{{asset($book->image)}}">
-                                            <input type="file" value="" name="image" class="form-control p-0 border-0">
+                                            <input type="file"  name="image" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <div>
@@ -75,6 +75,12 @@
                                         <label  class="col-md-12 p-0">Pages</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="number" value="{{$book->pages}}"  class="form-control p-0 border-0" name="pages" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Description</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <textarea name="description" id="" cols="30" rows="10">{{$book->description}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">

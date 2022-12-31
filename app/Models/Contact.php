@@ -13,9 +13,6 @@ class Contact extends Model
         'phone2',
         'address',
         'email',
-       ' facebook_link',
-       ' instagram_link',
-       ' whatsapp_link'
     ];
     protected $table = 'contact';
 

@@ -28,9 +28,6 @@ class ContactRequest extends FormRequest
             'phone2'=>'required',
             'address'=>'required',
             'email'=>'required',
-            'facebook_link'=>'required',
-            'whatsapp_link'=>'required',
-            'instagram_link'=>'required',
         ];
     }
 }

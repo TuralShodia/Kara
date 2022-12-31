@@ -1,4 +1,4 @@
-@extends('admin/layout/master')
+@extends('admin.layout.master')
 @section('content')
 
         <!-- ============================================================== -->
@@ -11,7 +11,7 @@
             <div class="page-breadcrumb bg-white">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Admin/books</h4>
+                        <h4 class="page-title">Admin/Books</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <div class="d-md-flex">
@@ -38,7 +38,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action='{{route('book.submit')}}' enctype="multipart/form-data" class="form-horizontal form-material">
+                                <form method="POST" action="{{route('book.submit')}}" enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
                                         <label class="col-md-4 p-0">Image</label>
                                         <input type="file" name="image"  class="form-control p-0 border-"> 
@@ -70,6 +70,12 @@
                                         <label  class="col-md-12 p-0">Pages</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="number"  class="form-control p-0 border-0" name="pages" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label  class="col-md-12 p-0">Description</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <textarea name="description" id="" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
@@ -115,13 +121,12 @@
                                              <tr>  
 
                                             <td><img style="width: 80px" src="{{asset($book->image)}}"></td>
-                                            <td>{{$book->image}}</td>
                                             <td>{{$book->name}}</td>
                                             <td>{{$book->writer}}</td>
                                             <td>{{$book->language}}</td>
                                             <td>{{$book->year}}</td>
                                             <td>{{$book->pages}}</td>
-                                            <td>{{$book->category_id}}</td>
+                                            <td>{{$book->category->name}}</td>
                                             <td>
                                                 <form action="{{ route('book.edit',$book->id) }}">
                                                     <button type="submit">Edit</button>

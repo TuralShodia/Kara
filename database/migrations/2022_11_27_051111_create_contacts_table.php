@@ -19,9 +19,6 @@ return new class extends Migration
             $table->string('phone2');
             $table->string('email');
             $table->string('address');
-            $table->string('facebook_link');
-            $table->string('instagram_link');
-            $table->string('whatsapp_link');
             $table->timestamps();
         });
     }

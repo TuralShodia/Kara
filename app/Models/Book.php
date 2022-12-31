@@ -14,6 +14,7 @@ protected $fillable = [
         'year',
         'writer',
         'pages',
+        'description',
         'category_id'
     ];
     use HasFactory;

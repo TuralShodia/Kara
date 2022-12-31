@@ -1,8 +1,5 @@
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
-                href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->
@@ -23,7 +20,7 @@
 <script src="{{asset('adminn/js/app-style-switcher.js')}}"></script>
 <script src="{{asset('adminn/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js')}}"></script>
 <!--Wave Effects -->
-<script src="{{asset('adminn/js/waves.js')}}"></script>adminn/
+<script src="{{asset('adminn/js/waves.js')}}"></script>
 <!--Menu sidebar -->
 <script src="{{('adminn/js/sidebarmenu.js')}}"></script>
 <!--Custom JavaScript -->

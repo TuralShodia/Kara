@@ -1,4 +1,4 @@
-@extends('admin/layout/master')
+@extends('admin.layout.master')
 @section('content')
 
       <!-- Page wrapper  -->
@@ -39,7 +39,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action="{{route('contacts.update',$contact->id)}}" class="form-horizontal form-material">
+                                <form method="POST" action="{{route('contacts.update')}}" class="form-horizontal form-material">
                                     @csrf
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Phone</label>
@@ -63,24 +63,6 @@
                                         <label class="col-md-12 p-0">Email</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="email" name="email" value="{{$contact->email}}" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Facebook link</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" name="facebook_link" value="{{$contact->facebook_link}}" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Whatsapp link</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" name="whatsapp_link" value="{{$contact->whatsapp_link}}" class="form-control p-0 border-0">
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Instagram link</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" name="instagram_link" value="{{$contact->instagram_link}}" class="form-control p-0 border-0">
                                         </div>
                                     </div>
 

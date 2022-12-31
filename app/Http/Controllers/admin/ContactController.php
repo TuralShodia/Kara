@@ -14,30 +14,11 @@ class ContactController extends Controller
         $contact=Contact::first();
         return view('admin/contact',compact('contact'));
     }
-    public function update(ContactRequest $req,$id){
-        
-        // $validator=Validator::make($data,[
-        //     'phone'=>'required',
-        //     'phone2'=>'required',
-        //     'address'=>'required',
-        //     'email'=>'required',
-        //     'facebook_link'=>'required',
-        //     'whatsapp_link'=>'required',
-        //     'instagram_link'=>'required',
-    
-        // ]);
-        
+    public function update(ContactRequest $req){
 
-        // if($validator->fails()){
-
-        //     return redirect()->back()->withErrors($validator);
-
-        // }
-        
-        $contacts = Contact::find($id);
-            $contacts->update($req->only(['phone','phone2','address','email',' facebook_link',' instagram_link',' whatsapp_link']));
-            return redirect()->back()->with('success','updated successfully');
-       
+        $contact = Contact::first();
+        $contact->update($req->all());
+        return redirect()->back()->with('success','updated successfully');
     }
     
 }

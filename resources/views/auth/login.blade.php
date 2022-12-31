@@ -21,7 +21,6 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{asset('log/images/signin-image.jpg')}}" alt="sing up image"></figure>
-                        <a href="{{route('register')}}" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
@@ -47,14 +46,7 @@
                                <div style="color: red">{{session('danger')}}</div> 
                             @endif
                         </form>
-                        <div class="social-login">
-                            <span class="social-label">Or login with</span>
-                            <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
-                            </ul>
-                        </div>
+   
                     </div>
                 </div>
             </div>

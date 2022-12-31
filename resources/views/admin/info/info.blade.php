@@ -1,4 +1,4 @@
-@extends('admin/layout/master')
+@extends('admin.layout.master')
 @section('content')
 
       <!-- Page wrapper  -->
@@ -49,7 +49,7 @@
                                         <div class="form-group mb-4">
                                             <label for="example-email" class="col-md-12 p-0">Name</label>
                                             <div class="col-md-12 border-bottom p-0">
-                                                <input type="text" placeholder="" class="form-control p-0 border-0" name="name" id="example-email">
+                                                <input type="text"  class="form-control p-0 border-0" name="name" id="example-email">
                                             </div>
                                         </div>
                                             <label class="col-md-4 p-0">Image</label>

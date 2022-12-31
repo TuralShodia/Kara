@@ -7,32 +7,36 @@ use App\Models\{Book,Category};
 use App\Http\Requests\BookRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
     public function index(){
-        $categories=Category::orderBy('id')->get();
+        $categories=Category::orderBy('id')->select(['id','name'])->get();
         $books= Book::all();
-        return view('admin/books/books',compact('books','categories'));
+        return view('admin/books/index',compact('books','categories'));
     }  
-    public function store(BookRequest $req){ 
+
+    public function store(BookRequest $req)
+    {
        $data=$req->all();
-        if($req->hasFile('image')){
-            $ext=$req->image->extension();
-            $filename=rand(1,100).time().'.'. $ext ;
-            $fileNamewithUpload = "book/".$filename;
-            $req->image->move('book'  , $filename);
-            $data['image']= $fileNamewithUpload;
+       if($req->hasFile('image')){
+        $ext=$req->image->extension();
+        $filename=rand(1,100).time().'.'. $ext ;
+        $fileNamewithUpload = "book/".$filename;
+        $req->image->move('book'  , $filename);
+        $data['image'] = $fileNamewithUpload;
         }
         try {
             Book::create($data);
-    
             return redirect()->back();
         }catch (Throwable $e) {
             report($e);
             return false;
             }
-            return redirect()->back();
+        
+        return redirect()->back();
     }
     
 public function edit($id)
@@ -48,6 +52,8 @@ public function update($id, BookRequest $req)
     $data=$req->all();
     $books=Book::findOrFail($id);
 
+ 
+   try {   
     if($req->hasFile('image')){
         $ext=$req->image->extension();
         $filename=rand(1,100).time().'.'. $ext ;
@@ -57,10 +63,10 @@ public function update($id, BookRequest $req)
         // if(File::exists($books->image))
         // {
         //     File::delete($books->image);
-        // }
-    }try {
+        // } }
+    }
         $books->update($data);
-
+        
         return redirect()->back();
     }catch (Throwable $e) {
         report($e);
