@@ -26,6 +26,8 @@ class NewsController extends Controller
             $req->image->move('images'  , $filename);
             // $req->image->storeAs('public/storage/images/',$filename);
             $news->image=$fileNamewithUpload;
+        }else{
+            return redirect()->back()->with('errors');
         }
         $news->title = $req->title;
         $news->name = $req->name;
@@ -52,6 +54,8 @@ class NewsController extends Controller
             // {
             //     File::delete($products->image);
             // }
+        }else{
+            return redirect()->back()->with('errors');
         }
         try {
             $news->update($data);

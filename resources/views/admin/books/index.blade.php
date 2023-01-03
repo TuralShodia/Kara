@@ -87,6 +87,11 @@
                                                 @endforeach
                                             </select>
                                     </div>
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Add book</button>
@@ -129,10 +134,12 @@
                                             <td>{{$book->category->name}}</td>
                                             <td>
                                                 <form action="{{ route('book.edit',$book->id) }}">
-                                                    <button type="submit">Edit</button>
+                                                    <button type="submit" class="btn btn-primary">Edit</button>
                                                 </form>
+                                            </td>
+                                            <td>
                                                 <form action="{{ route('book.delete',$book->id) }}">
-                                                    <button type="submit">Delete</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </td>
                                             </tr>

@@ -78,7 +78,7 @@ Route::group(['prefix'=>'/admin'], function(){
       Route::get('/books-single/{book}',[FrontController::class,'booksSingle'])->name('book.single');
       Route::get('/news',[FrontController::class,'news'])->name('front.news');
       Route::get('/news-single',[FrontController::class,'newsSingle'])->name('front.news.single');
-      Route::get('/about',[FrontController::class,'about'])->name('front.about');
+      Route::get('/about us',[FrontController::class,'about'])->name('front.about');
       Route::get('/message',[FrontController::class,'message'])->name('front.message');
 
 

@@ -27,6 +27,8 @@ class BookController extends Controller
         $fileNamewithUpload = "book/".$filename;
         $req->image->move('book'  , $filename);
         $data['image'] = $fileNamewithUpload;
+        }else{
+            return redirect()->back()->with('errors');
         }
         try {
             Book::create($data);
@@ -64,6 +66,8 @@ public function update($id, BookRequest $req)
         // {
         //     File::delete($books->image);
         // } }
+    }else{
+        return redirect()->back()->with('errors');
     }
         $books->update($data);
         

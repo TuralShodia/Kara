@@ -96,7 +96,11 @@
                                                 @endforeach
                                             </select>
                                     </div>
-                               
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Update book</button>

@@ -11,14 +11,14 @@
             </div>
             <div class="card-body">
                 <div class="blog-media">
-                    <img src="assets/imgs/blog-6.jpg" alt="" class="w-100">    
+                    <img src="{{asset($about->image)}}" alt="" class="w-100">    
                 </div>  
                 <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
             </div>
             
             <div class="card-footer d-flex justify-content-between align-items-center flex-basis-0">
                 <button class="btn btn-primary circle-35 mr-4"><i class="ti-back-right"></i></button>
-                <a href="single-post.html" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                <a href="{{route('front.about')}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
                 <a href="#" class="text-dark small text-muted">By : Joe Mitchell</a>
             </div>                  
         </div>

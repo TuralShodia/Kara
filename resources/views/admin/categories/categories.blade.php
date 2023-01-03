@@ -87,10 +87,10 @@
                                         <tr>
                                             <td>{{$category->name}}</td>
                                             <form action="{{route('categories.edit',$category->id)}}">
-                                                <td><button>Edit</button></td>
+                                                <td><button type="submit" class="btn btn-primary">Edit</button></td>
                                             </form>
                                             <form action="{{route('categories.delete',$category->id)}}">
-                                                <td><button>Delete</button></td>
+                                                <td><button type="submit" class="btn btn-danger">Delete</button></td>
                                             </form>
                                             
                                         </tr>

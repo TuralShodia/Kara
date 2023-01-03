@@ -65,7 +65,11 @@
                                             <input type="email" name="email" value="{{$contact->email}}" class="form-control p-0 border-0">
                                         </div>
                                     </div>
-
+                                    @if(session()->has('success'))
+                                    <div class="alert alert-success">
+                                        {{ session()->get('success') }}
+                                    </div>
+                                    @endif  
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Update</button>

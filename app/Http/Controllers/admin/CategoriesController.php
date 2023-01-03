@@ -35,5 +35,10 @@ class CategoriesController extends Controller
             report($e);
             return false;
         }
-}
-}
+    }
+    public function delete($id){
+            $category=Category::findOrFail($id);
+            $category->delete();
+            return redirect()->route('categories');
+        }
+    }

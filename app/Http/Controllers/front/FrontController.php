@@ -8,10 +8,11 @@ use App\Http\Controllers\Controller;
 class FrontController extends Controller
 {
     public function index(){
+        $about=About::first();
         $news=News::skip(0)->take(2)->get();
         $books = Book::skip(0)->take(4)->get();
         // $books=Book::all();
-        return view('front.index', compact('books','news'));
+        return view('front.index', compact('books','news','about'));
     }
     public function books(){
         $books=Book::all();

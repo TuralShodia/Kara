@@ -61,10 +61,14 @@
                                                 <input type="text" placeholder="" class="form-control p-0 border-0" name="title" id="example-email">
                                             </div>
                                         </div>
-                                     
+                                        @if(session()->has('errors'))
+                                        <div class="alert alert-danger">
+                                            {{ session()->get('errors') }}
+                                        </div>
+                                        @endif 
                                         <div class="form-group mb-4">
                                             <div class="col-sm-12">
-                                                <button type="submit" class="btn btn-success">Add Product</button>
+                                                <button type="submit" class="btn btn-success">Add News</button>
                                             </div>
                                         </div>
                                     </form>
@@ -98,10 +102,12 @@
                                                     <td>{{$news->title}}</td>
                                                     <td>
                                                         <form action="{{route('info.edit',$news->id)}}">
-                                                            <button type="submit">Edit</button>
+                                                            <button type="submit" class="btn btn-primary">Edit</button>
                                                         </form>
+                                                    </td>
+                                                    <td>
                                                         <form action="{{route('info.delete',$news->id)}}">
-                                                            <button type="submit">Delete</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>

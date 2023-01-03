@@ -70,6 +70,11 @@
                                             <input type="text" value="{{$news->title}}" name="title" class="form-control p-0 border-0">
                                         </div>
                                     </div>
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Update Profile</button>
