@@ -6,6 +6,8 @@ use Throwable;
 use App\Models\News;
 use App\Http\Requests\NewsRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\NewsUpdateRequest;
 
 
 class NewsController extends Controller
@@ -40,39 +42,49 @@ class NewsController extends Controller
         $news=News::findOrFail($id);
         return view('admin/info/update',compact('news'));
     }
-    public function update($id, NewsRequest $req){
-        $data=$req->all();
-        $news = News::findOrFail($id);
-
-        if($req->hasFile('image')){
-            $ext=$req->image->extension();
-            $filename=rand(1,100).time().'.'. $ext ;
-            $fileNamewithUpload = "product/".$filename;
-            $req->image->move('product'  , $filename);
-            $data['image']=$fileNamewithUpload;
-            // if(File::exists($products->image))
-            // {
-            //     File::delete($products->image);
-            // }
-        }else{
-            return redirect()->back()->with('errors');
-        }
-        try {
-            $news->update($data);
-            return redirect()->back()->with('success','updated successfully');
-        } catch (Throwable $e) {
-            report($e);
-     
-            return false;
-        }
+    public function update($id, NewsUpdateRequest $req){
         
-    }
-    public function delete($id)
-    {
-        $news=News::findOrFail($id);
-        $news->delete();
-        return redirect()->route('info');
-    }
-
-
+        try {   
+            $data=$req->all();
+            $news=News::findOrFail($id);
+            $news->update([
+                'name'=>$req->name,
+                'title'=>$req->title,
+            ]);
+            if($req->hasFile('image')){
+                request()->validate([
+                    'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                     ]);
+                $ext=$req->image->extension();
+                $filename=rand(1,100).time().'.'. $ext ;
+                $fileNamewithUpload = "book/".$filename;
+                $req->image->move('book'  , $filename);
+                $data['image']=$fileNamewithUpload;
+                // if(File::exists($books->image))
+                // {
+                //     File::delete($books->image);
+                // } }
+                $news->update(['image'=>$data['image']]);
+            }else{
+                return redirect()->back()->with('errors');
+            }
+                
+                
+                return redirect()->back();
+            }catch (Throwable $e) {
+                report($e);
+                return false;
+                }
+            }
+            public function delete($id)
+            {
+                $news=News::findOrFail($id);
+                if(File::exists($news->image))
+                    {
+                        File::delete($news->image);
+                    }
+                $news->delete();
+                return redirect()->route('info');
+            }
+            
 }

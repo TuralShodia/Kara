@@ -28,10 +28,15 @@ class AboutController extends Controller
             {
                 File::delete($about->image);
             } 
+            $about->update($data);
         }else{
+            $about->update([
+                'name'=>$data['name'],
+                'description'=>$data['description'],
+            ]);
             return redirect()->back()->with('errors');
         }
-        $about->update($data);
+        
         return redirect()->back()->with('success','updated successfully');
 
     }
