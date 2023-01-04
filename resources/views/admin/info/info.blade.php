@@ -46,19 +46,20 @@
                                 <div class="card-body">
                                     <form method="POST" action='{{route('info.submit')}}' enctype="multipart/form-data" class="form-horizontal form-material">
                                         @csrf
-                                        <div class="form-group mb-4">
-                                            <label for="example-email" class="col-md-12 p-0">Name</label>
-                                            <div class="col-md-12 border-bottom p-0">
-                                                <input type="text"  class="form-control p-0 border-0" name="name" id="example-email">
-                                            </div>
-                                        </div>
+                                        
                                             <label class="col-md-4 p-0">Image</label>
                                             <input type="file" name="image"  class="form-control p-0 border-"> 
                                         
                                         <div class="form-group mb-4">
                                             <label for="example-email" class="col-md-12 p-0">Title</label>
                                             <div class="col-md-12 border-bottom p-0">
-                                                <input type="text" placeholder="" class="form-control p-0 border-0" name="title" id="example-email">
+                                                <input type="text" class="form-control p-0 border-0" name="title">
+                                            </div>
+                                        </div>
+                                        <div class="form-group mb-4">
+                                            <label for="example-email" class="col-md-12 p-0">Description</label>
+                                            <div class="col-md-12 border-bottom p-0">
+                                               <textarea name="description" cols="30" rows="10"></textarea>
                                             </div>
                                         </div>
                                         @if(session()->has('errors'))
@@ -84,22 +85,16 @@
                                         <table class="table text-nowrap">
                                             <thead>
                                                 <tr>
-        
-                                                    <th class="border-top-0">Name</th>
-                                                    <th class="border-top-0">Image</th>
                                                     <th class="border-top-0">Title</th>
+                                                    <th class="border-top-0">Image</th>
                                                     <th class="border-top-0">Action</th>
-         
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($allnews as $news)
-                                                    
-                                                
                                                 <tr>
-                                                    <td>{{$news->name}}</td>
-                                                    <td><img style="width: 80px" src="{{asset($news->image)}}" ></td>
                                                     <td>{{$news->title}}</td>
+                                                    <td><img style="width: 80px" src="{{asset($news->image)}}" ></td>
                                                     <td>
                                                         <form action="{{route('info.edit',$news->id)}}">
                                                             <button type="submit" class="btn btn-primary">Edit</button>

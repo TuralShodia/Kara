@@ -50,13 +50,6 @@
                                             </ul>
                                         </div>
                                     @endif
-                                    
-                                    <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Name</label>
-                                        <div class="col-md-12 border-bottom p-0">
-                                            <input name="name" type="text" value="{{$news->name}}"
-                                                class="form-control p-0 border-0"> </div>
-                                    </div>
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Image </label>
                                         <div class="col-md-12 border-bottom p-0">
@@ -68,6 +61,12 @@
                                         <label class="col-md-12 p-0">Title</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <input type="text" value="{{$news->title}}" name="title" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Name</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <textarea name="description"cols="30" rows="10">{{$news->description}}</textarea> 
                                         </div>
                                     </div>
                                     @if(session()->has('errors'))

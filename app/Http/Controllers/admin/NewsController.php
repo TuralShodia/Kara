@@ -32,7 +32,7 @@ class NewsController extends Controller
             return redirect()->back()->with('errors');
         }
         $news->title = $req->title;
-        $news->name = $req->name;
+        $news->description = $req->description;
         $news->save();
         
         return redirect()->route('info');
@@ -48,7 +48,7 @@ class NewsController extends Controller
             $data=$req->all();
             $news=News::findOrFail($id);
             $news->update([
-                'name'=>$req->name,
+                'description'=>$req->description,
                 'title'=>$req->title,
             ]);
             if($req->hasFile('image')){
