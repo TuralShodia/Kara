@@ -4,15 +4,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\admin\{
+    AdminController,
     AboutController,
     ProfileController,
-  BookController,
-  NewsController,
-  ContactController,
-  CategoriesController
+    BookController,
+    NewsController,
+    ContactController,
+    CategoriesController,
+    UserController
 };
 use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\MessageController;
+use App\Models\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +31,9 @@ Route::group(['prefix'=>'/admin'], function(){
     Route::group(['middleware'=>'isLogin'], function(){
       Route::get('/',[AuthController::class, 'index'])->name('login');
       Route::post('/',[AuthController::class, 'login'])->name('login.submit');
-      // Route::get('/register',[AuthController::class, 'register'])->name('register');
-      // Route::post('/register', [AuthController::class, 'resgistersubmit'])->name('register.submit');
     });
       Route::group(['middleware'=>'noLogin'], function(){
-          Route::get('/dashboard',function(){return view('admin/dashboard');})->name('dashboard');
+          Route::get('/dashboard',[AdminController::class, 'index'])->name('dashboard');
 
           Route::get('/profile/edit',[ProfileController::class, 'index'])->name('profile');
           Route::post('/profile/update',[ProfileController::class, 'update'])->name('profile.update');
@@ -42,6 +43,10 @@ Route::group(['prefix'=>'/admin'], function(){
   
           Route::get('/message',[MessageController::class,'index'])->name('message');
   
+          
+          Route::get('/orders',[AdminController::class, 'orderTable'])->name('order');
+          Route::get('/orders/delete/{id}',[AdminController::class, 'delete'])->name('order.delete');
+
           Route::get('/info',[NewsController::class, 'index'])->name('info');
           Route::post('/info',[NewsController::class, 'store'])->name('info.submit');
           Route::get('/info/edit/{id}',[NewsController::class, 'edit'])->name('info.edit');
@@ -64,21 +69,40 @@ Route::group(['prefix'=>'/admin'], function(){
           Route::post('/book/update/{id}',[BookController::class, 'update'])->name('book.update');
           Route::get('/book/delete/{id}',[BookController::class, 'delete'])->name('book.delete');
 
-    
           Route::get('/abouts/edit',[AboutController::class, 'index'])->name('about');
           Route::post('/abouts/update',[AboutController::class, 'update'])->name('about.update');
   
           Route::get('/message/delete/{id}',[MessageController::class, 'delete'])->name('message.delete');
-      
+
+          Route::get('/users',[UserController::class,'index'])->name('user');
+          Route::post('/users',[UserController::class, 'store'])->name('user.submit');
+          Route::get('/users/edit/{id}',[UserController::class, 'edit'])->name('user.edit');
+          Route::post('/users/update/{id}',[UserController::class, 'update'])->name('user.update');
+          Route::get('/users/delete/{id}',[UserController::class, 'delete'])->name('user.delete');
+
         });
     });
 
-      Route::get('/',[FrontController::class,'index'])->name('home');
+      Route::get('/home',[FrontController::class,'index'])->name('home');
       Route::get('/books',[FrontController::class,'books'])->name('front.book');
       Route::get('/books-single/{book}',[FrontController::class,'booksSingle'])->name('book.single');
       Route::get('/news',[FrontController::class,'news'])->name('front.news');
-      Route::get('/news-single',[FrontController::class,'newsSingle'])->name('front.news.single');
+      Route::get('/news-single/{news}',[FrontController::class,'newsSingle'])->name('front.news.single');
       Route::get('/about us',[FrontController::class,'about'])->name('front.about');
       Route::get('/message',[FrontController::class,'message'])->name('front.message');
+      Route::post('/message',[MessageController::class,'message'])->name('front.message.submit');
 
+      Route::get('/user/sign-up',[UserController::class,'register'])->name('user.register');
+      Route::post('/user/sign-up/submit',[UserController::class,'registerSubmit'])->name('user.register.submit');
+
+      Route::get('/user/login',[UserController::class,'login'])->name('user.login');
+      Route::post('/user/login-submit',[UserController::class,'loginSubmit'])->name('user.login.submit');
+      Route::group(['middleware'=>'userLogin'] ,function(){
+        Route::get('/order/{id}',[AdminController::class, 'order'])->name('front.order');
+      });
+      
+      
+
+      Route::get('/user/logout',[UserController::class, 'logout'])->name('user.logout');
+      // Route::get('/users',[FrontController::class,'edit'])->name('user');
 

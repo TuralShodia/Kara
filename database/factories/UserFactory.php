@@ -20,8 +20,9 @@ class UserFactory extends Factory
     {
         return [
             'id'=>'1',
-            'name'=>'User',
+            'name'=>'user',
             'email' => fake()->unique()->safeEmail(),
+            'role_id'=>'1',
             'email_verified_at' => now(),
             'password' => Hash::make('1234'), // password
             'remember_token' => Str::random(10),

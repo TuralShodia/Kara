@@ -19,7 +19,7 @@ class AboutFactory extends Factory
         return [
             'name' => fake()->name(),
             'description'=>fake()->text(),
-            'image'=>fake()->image(),
+            'image'=>fake()->imageUrl(),
         ];
     }
 }

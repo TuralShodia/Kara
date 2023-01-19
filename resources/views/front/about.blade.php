@@ -12,14 +12,10 @@
             </div>
             <div class="card-body">
                 <div class="blog-media">
-                    <img src="{{asset($about->image)}}" alt="" class="w-100">    
+                    <img src="{{asset($about->image)}}" height="460px" width='500px' class="mx-auto d-block" >    
                 </div>  
                 <h3 class="my-3">{{$about->description}}</h3>
             </div>
-            <div class="card-footer d-flex justify-content-between align-items-center flex-basis-0">
-                <button class="btn btn-primary circle-35 mr-4"><i class="ti-back-right"></i></button>
-                <a href="#" class="text-dark small text-muted">By : Joe Mitchell</a>
-            </div>                  
         </div>
     </div>
 

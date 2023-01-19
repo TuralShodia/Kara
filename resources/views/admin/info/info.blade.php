@@ -62,6 +62,11 @@
                                                <textarea name="description" cols="30" rows="10"></textarea>
                                             </div>
                                         </div>
+                                        @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
                                         @if(session()->has('errors'))
                                         <div class="alert alert-danger">
                                             {{ session()->get('errors') }}
@@ -79,7 +84,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="white-box">
-                                    <h3 class="box-title">All Categories</h3>
+                                    <h3 class="box-title">All News</h3>
                                     
                                     <div class="table-responsive">
                                         <table class="table text-nowrap">

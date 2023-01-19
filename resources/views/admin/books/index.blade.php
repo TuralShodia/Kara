@@ -40,6 +40,16 @@
                             <div class="card-body">
                                 <form method="POST" action="{{route('book.submit')}}" enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                         <label class="col-md-4 p-0">Image</label>
                                         <input type="file" name="image"  class="form-control p-0 border-"> 
                                     <div class="form-group mb-4">
@@ -82,16 +92,14 @@
                                         <label class="col-md-12 p-0">Category</label>
                                         <div class="col-md-12 border-bottom p-0">
                                             <select name="category_id">
-                                                @foreach($categories as $category)
+                                                @if (@isset($categories))
+                                                    @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
+                                                @endforeach 
+                                                @endif
                                             </select>
                                     </div>
-                                    @if(session()->has('errors'))
-                                    <div class="alert alert-danger">
-                                        {{ session()->get('errors') }}
-                                    </div>
-                                    @endif 
+                                    
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Add book</button>
@@ -131,7 +139,11 @@
                                             <td>{{$book->language}}</td>
                                             <td>{{$book->year}}</td>
                                             <td>{{$book->pages}}</td>
-                                            <td>{{$book->category->name}}</td>
+                                            @if ($book->category_id!=0)
+                                              <td>{{$book->category->name}}</td> 
+                                            @else
+                                                <td>null</td>
+                                            @endif
                                             <td>
                                                 <form action="{{ route('book.edit',$book->id) }}">
                                                     <button type="submit" class="btn btn-primary">Edit</button>

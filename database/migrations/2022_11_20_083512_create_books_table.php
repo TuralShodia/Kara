@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('pages');
             $table->unsignedBigInteger('category_id');
             $table->string('image');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
         });
     }

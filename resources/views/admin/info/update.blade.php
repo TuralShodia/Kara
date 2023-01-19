@@ -69,6 +69,11 @@
                                             <textarea name="description"cols="30" rows="10">{{$news->description}}</textarea> 
                                         </div>
                                     </div>
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
                                     @if(session()->has('errors'))
                                     <div class="alert alert-danger">
                                         {{ session()->get('errors') }}

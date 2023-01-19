@@ -8,20 +8,9 @@ use App\Http\Requests\MessageRequest;
 
 class MessageController extends Controller
 {
-    public function frontmessage(MessageRequest $req){
-        // $validator=Validator::make($req->all(),[
-        //     'name'=>'required',
-        //     'surname'=>'required',
-        //     'phone'=>'required',
-        //     'email'=>'required',
-        //     'message'=>'required'
-        // ]);
-        // if($validator->fails()){
-        //     return redirect()->back()->withErrors($validator);
-            
-        // }
+    public function message(MessageRequest $req){
         Message::create($req->all());
-        return redirect()->route('contact');
+        return redirect()->back()->with('success','Message Sent Successfully');
     }public function index(){
         $messages=Message::all();
         return view('admin/message',compact('messages'));
@@ -30,6 +19,6 @@ class MessageController extends Controller
     {
         $message=Message::findOrFail($id);
         $message->delete();
-    return redirect()->route('message');
+    return redirect()->route('message')->with('success','Message Deleted Successfully');
 }
 }

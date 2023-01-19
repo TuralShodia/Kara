@@ -20,7 +20,6 @@
                             <div class="card-header ">                                   
                                 <div class="blog-media">
                                     <img src="{{$book->image}}" alt="" class="w-100">
-                                    <a href="" class="badge badge-primary">#dolores</a>        
                                 </div>  
                             </div>
                             <div class="card-body ">

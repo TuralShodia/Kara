@@ -41,6 +41,16 @@
                             <div class="card-body">
                                 <form method="POST" action="{{route('about.update')}}" enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Name</label>
                                         <div class="col-md-12 border-bottom p-0">
@@ -60,16 +70,7 @@
                                             <textarea name="description"  cols="30" rows="10">{{$about->description}}</textarea>
                                         </div>
                                     </div>
-                                    @if(session()->has('success'))
-                                    <div class="alert alert-success">
-                                        {{ session()->get('success') }}
-                                    </div>
-                                    @endif  
-                                    @if(session()->has('errors'))
-                                    <div class="alert alert-danger">
-                                        {{ session()->get('errors') }}
-                                    </div>
-                                    @endif  
+                                     
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Update</button>

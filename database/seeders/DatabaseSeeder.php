@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +25,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\Contact::factory(1)->create();
         \App\Models\About::factory(1)->create();
         \App\Models\User::factory(1)->create();
-        
+        \App\Models\Book::factory(1)->create();
+        \App\Models\Category::factory(5)->create();
+        \App\Models\News::factory(10)->create();
+        $this->call([
+            BookSeeder::class,
+        ]);
     }
 }

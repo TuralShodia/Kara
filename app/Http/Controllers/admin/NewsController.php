@@ -35,7 +35,7 @@ class NewsController extends Controller
         $news->description = $req->description;
         $news->save();
         
-        return redirect()->route('info');
+        return redirect()->route('info')->with('success','News Inserted Successfully');;
     }
     public function edit($id)
     {
@@ -65,12 +65,8 @@ class NewsController extends Controller
                 //     File::delete($books->image);
                 // } }
                 $news->update(['image'=>$data['image']]);
-            }else{
-                return redirect()->back()->with('errors');
-            }
-                
-                
-                return redirect()->back();
+            }                
+                return redirect()->back()->with('success','News Updated Successfully');;
             }catch (Throwable $e) {
                 report($e);
                 return false;
@@ -84,7 +80,7 @@ class NewsController extends Controller
                         File::delete($news->image);
                     }
                 $news->delete();
-                return redirect()->route('info');
+                return redirect()->route('info')->with('success','News Deleted Successfully');;
             }
             
 }

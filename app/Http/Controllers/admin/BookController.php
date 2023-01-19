@@ -33,13 +33,13 @@ class BookController extends Controller
         }
         try {
             Book::create($data);
-            return redirect()->back();
+            return redirect()->back()->with('success','Book Inserted Successfully');
         }catch (Throwable $e) {
             report($e);
             return false;
             }
         
-        return redirect()->back();
+        return redirect()->back()->with('success','Book Inserted Successfully');
     }
     
 public function edit($id)
@@ -52,38 +52,6 @@ public function edit($id)
 
 public function update($id, BookUpdateRequest $req)
 {
-    
-
-    // try {
-    //     $experience = Experience::findOrFail($id);
-
-    //     $experience->update([
-    //         'company_name' =>   $req->company_name,
-    //         'duty'         =>   $req->duty,
-    //         'start'        =>   $req->start,
-    //         'end'          =>   $req->end,
-    //         'work_time'    =>   $req->work_time,
-    //         'type'         =>   $req->type
-    //     ]);
-
-    //     if ($files = $req->file('image')) {
-    //         request()->validate([
-    //             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //         ]);
-    //         $image_path = public_path($experience->image);
-    //         if (File::exists($image_path)) {
-    //             File::delete($image_path);
-    //         }
-    //         $destinationPath = public_path('/images/');
-    //         $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-    //         $files->move($destinationPath, $profileImage);
-    //         $experience->update(['image' => 'images/' . $profileImage]);
-    //     }
-    //     return redirect()->back()->with('success', 'Updated successfully!');
-    // } catch (\Exception $exception) {
-    //     return redirect()->back()->with('error', $exception->getMessage());
-    // }
-
     
    try {   
     $data=$req->all();
@@ -110,12 +78,9 @@ public function update($id, BookUpdateRequest $req)
         //     File::delete($books->image);
         // } }
         $books->update(['image'=>$data['image']]);
-    }else{
-        return redirect()->back()->with('errors');
+       
     }
-        
-        
-        return redirect()->back();
+     return redirect()->back()->with('success','Book Updated Successfully');    
     }catch (Throwable $e) {
         report($e);
         return false;
@@ -130,6 +95,6 @@ public function delete($id)
             File::delete($books->image);
         }
     $books->delete();
-    return redirect()->route('book');
+    return redirect()->route('book')->with('success','Book Deleted Successfully');;
 }
 }

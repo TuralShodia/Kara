@@ -25,6 +25,10 @@ class FrontController extends Controller
     public function news(){
         $news=News::all();
         return view('front.news',compact('news')); 
+    } 
+    public function newsSingle($id){
+        $news=News::findOrFail($id);
+        return view('front.news-single',compact('news'));
     }
     public function message(){
         $messages=Message::all();

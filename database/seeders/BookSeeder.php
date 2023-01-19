@@ -6,7 +6,7 @@ use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
+use Faker\Generator as Faker;
 class BookSeeder extends Seeder
 {
     /**
@@ -16,13 +16,8 @@ class BookSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()
-        ->has(
-            Book::factory(100)
-                ->state(function (array $attributes, Category $category) {
-                    return ['category_id' => $category->id];
-                })
-        )
+        Book::factory()
+        ->count(50)
         ->create();
     }
 }

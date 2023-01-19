@@ -32,7 +32,7 @@
                                 <p class="my-2"></p>
                             </div>
                             <div class="card-footer p-0 text-center">
-                                <a href="single-post.html" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                                <a href="{{route('front.news.single',$item->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
                             </div>   
                         </div>
                     </div>

@@ -34,7 +34,7 @@ class AboutController extends Controller
                 'name'=>$data['name'],
                 'description'=>$data['description'],
             ]);
-            return redirect()->back()->with('errors');
+            return redirect()->back()->with('success','updated successfully');
         }
         
         return redirect()->back()->with('success','updated successfully');

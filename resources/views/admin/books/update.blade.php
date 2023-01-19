@@ -40,6 +40,16 @@
                             <div class="card-body">
                                 <form method="POST" action='{{route('book.update',$book->id)}}' enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
+                                    @if(session()->has('errors'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('errors') }}
+                                    </div>
+                                    @endif 
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Image</label>
                                         <div class="col-md-12 border-bottom p-0">
@@ -50,13 +60,13 @@
                                     <div>
                                         <label  class="col-md-12 p-0">Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text"   value="{{$book->language}}"  class="form-control p-0 border-0" name="name" >
+                                            <input type="text"   value="{{$book->name}}"  class="form-control p-0 border-0" name="name" >
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label  class="col-md-12 p-0">Writer</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text"  value="{{$book->language}}" class="form-control p-0 border-0" name="writer" >
+                                            <input type="text"  value="{{$book->writer}}" class="form-control p-0 border-0" name="writer" >
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
@@ -96,11 +106,7 @@
                                                 @endforeach
                                             </select>
                                     </div>
-                                    @if(session()->has('errors'))
-                                    <div class="alert alert-danger">
-                                        {{ session()->get('errors') }}
-                                    </div>
-                                    @endif 
+                                    
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Update book</button>

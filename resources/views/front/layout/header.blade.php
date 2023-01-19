@@ -43,7 +43,13 @@
                 </ul>
                 <div class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="components.html" class="ml-4 btn btn-dark mt-1 btn-sm">Components</a>
+                        @auth
+                        <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Logout</a>
+                        @endauth
+                        @guest
+                        <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Login</a>
+                        <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Sign up</a>
+                        @endguest
                     </li>
                 </div>
             </div>

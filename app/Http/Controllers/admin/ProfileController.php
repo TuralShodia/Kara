@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProfileRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileRequest;
 
 
 class ProfileController extends Controller
@@ -18,7 +19,7 @@ class ProfileController extends Controller
         
         $user = Auth::user();
         if($req->password){
-            $user->password = $req->password;
+            $user->password = Hash::make($req->password);
         }
             $user->email = $req->email;
             $user->name = $req->name;

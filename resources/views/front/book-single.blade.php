@@ -8,7 +8,7 @@
     <h1 class="title" style="text-align: center">{{$book->name}}</h1>
         <div class="page-container">
             <div class="page-sidebar">
-                <img src="{{asset($book->image)}}">
+                <img src="{{asset($book->image)}}" height="340" width="280">
             </div>  
             <div class="page-content">
                 <div class="card">
@@ -22,8 +22,17 @@
                     </div>
                     <div class="card-body border-top">
                         <p class="my-3">{{$book->description}}</p> 
-
-                    </div>             
+                    </div>          
+                    <div class="card-body border-top">
+                        @if(session()->has('success'))
+                                        <div class="alert alert-success">
+                                            {{ session()->get('success') }}
+                                        </div>
+                                    @endif
+                        <form action="{{route('front.order',$book->id)}}">
+                            <button type="submit" class="btn btn-primary">Order</button>
+                        </form>                    
+                    </div>
                 </div> 
 
             </div>

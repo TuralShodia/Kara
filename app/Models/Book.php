@@ -21,4 +21,7 @@ protected $fillable = [
     public function category(){
         return $this->belongsTo(\App\Models\Category::class,'category_id');
     }
+    public function users(){
+        return $this->belongsToMany(User::class, Order::class);
+    }
 }

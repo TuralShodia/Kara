@@ -19,11 +19,12 @@ class BookFactory extends Factory
         return [
             'name' => fake()->name(),
             'language'=>fake()->name(),
-            'image'=>fake()->image(),
+            'image'=>fake()->imageUrl(),
             'year'=>fake()->year(),
             'writer'=>fake()->name(),
             'pages'=>fake()->numberBetween(100,500),
             'description'=>fake()->text(),
+            'category_id'=>fake()->numberBetween(1,5)
         ];
     }
 }

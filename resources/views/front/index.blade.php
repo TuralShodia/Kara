@@ -1,41 +1,41 @@
 @extends('front/layout/master')
-@section('content')
 
+@section('content')
+<div>
+@include('front.widget.about')
+</div>
     <!-- page-header -->
     <!-- end of page header -->
-
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+@if(session()->has('errors'))
+<div class="alert alert-danger">
+    {{ session()->get('errors') }}
+</div>
+@endif 
     <div class="container">
-        <div class="card">
-            <div class="card-header text-center">
-                <h2 class="card-title">About Us</h2> 
-            </div>
-            <div class="card-body">
-                <div class="blog-media">
-                    <img src="{{asset($about->image)}}" alt="" class="w-100">    
-                </div>  
-                <p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
-            </div>
-            
-            <div class="card-footer d-flex justify-content-between align-items-center flex-basis-0">
-                <button class="btn btn-primary circle-35 mr-4"><i class="ti-back-right"></i></button>
-                <a href="{{route('front.about')}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
-                <a href="#" class="text-dark small text-muted">By : Joe Mitchell</a>
-            </div>                  
-        </div>
-        <section>
-            <div class="feature-posts">
-                <a href="single-post.html" class="feature-post-item">                       
-                    <span>Featured Posts</span>
-                </a>
-                @foreach ($news as $item)
-                <a href="single-post.html" class="feature-post-item">
-                    <img src="{{$item->image}}" class="w-100" alt="">
-                    <div class="feature-post-caption">{{$item->name}}</div>
-                </a>
-                @endforeach
-            </div>
-        </section>
+        @if ($news->count()>1)
+           <section>
+                <div class="feature-posts" >
+                    <a href="single-post.html" class="feature-post-item">                       
+                        <span>Featured Posts</span>
+                    </a>
+                    @foreach ($news as $item)
+                    <a href="{{route('front.news.single',$item->id)}}" class="feature-post-item">
+                        <img src="{{$item->image}}" height="250px" width="" class="w-100" alt="">
+                        <div class="feature-post-caption">{{$item->title}}</div>
+                    </a>
+                    @endforeach
+                </div>
+            </section> 
+        @endif
+        
         <hr>
+        
+        @if ($books->count()>0)
         <div class="page-container">
             <div class="page-content">
                 <hr>
@@ -45,30 +45,29 @@
                         <div class="card text-center mb-5">
                             <div class="card-header p-0">                                   
                                 <div class="blog-media">
-                                    <img src="{{$book->image}}" alt="" class="w-100">
-                                    <a href="#" class="badge badge-primary">#Elit</a>       
+                                    <img src="{{$book->image}}" alt="" class="w-100">   
                                 </div>  
                             </div>
                             <div class="card-body px-0">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
-                                <small class="small text-muted">January 10 2019 
-                                    <span class="px-2">-</span>
-                                    <a href="#" class="text-muted">143 Comments</a>
-                                </small>
                                 <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
                             </div>
                             
                             <div class="card-footer p-0 text-center">
-                                <a href="single-post.html" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                                <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
                             </div>                  
                         </div>
                     </div>
                     @endforeach                   
                     
                 </div>
-                <button class="btn btn-primary btn-block my-4">Load More Posts</button>
+                <form action="{{route('front.book')}}">
+                    @csrf
+                <button class="btn btn-primary btn-block my-4" type="submit">Load More Posts</button>
+                </form>
             </div>
         </div>
+        @endif
     </div>
 
-    @endsection
+@endsection 
