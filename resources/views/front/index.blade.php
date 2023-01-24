@@ -20,8 +20,8 @@
         @if ($news->count()>1)
            <section>
                 <div class="feature-posts" >
-                    <a href="single-post.html" class="feature-post-item">                       
-                        <span>Featured Posts</span>
+                    <a href="{{route('front.news')}}" class="feature-post-item">                       
+                        <span>Featured News</span>
                     </a>
                     @foreach ($news as $item)
                     <a href="{{route('front.news.single',$item->id)}}" class="feature-post-item">

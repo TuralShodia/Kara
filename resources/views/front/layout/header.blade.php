@@ -40,6 +40,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('front.message')}}">Message</a>
                     </li>
+                    @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Orders</a>
+                    </li> 
+                    @endauth
                 </ul>
                 <div class="navbar-nav ml-auto">
                     <li class="nav-item">

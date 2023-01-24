@@ -31,7 +31,12 @@ class AdminController extends Controller
         }
         return view('admin/order',compact('orders'));
     }
-
+    public function getBookImageById($book_id){
+        if(!Book::find($book_id)){
+            return 'Book Deleted';
+        }
+        return Book::find($book_id)->image;
+    }
     public function getBookNameById($book_id){
         if(!Book::find($book_id)){
             return 'Book Deleted';
@@ -60,6 +65,19 @@ class AdminController extends Controller
         $order=Order::findOrFail($id);
         $order->delete();
         return redirect()->route('order')->with('success','Order Deleted Successfully');;
+    }
+    public function orders($id){
+        $orders=Order::where('user_id',$id)->get();
+        foreach($orders as $key=>$order){
+            $orders[$key]['book_name'] = $this->getBookNameById($order->book_id);
+            $orders[$key]['book_image'] = $this->getBookImageById($order->book_id);
+        }
+        return view('front.orders',compact('orders'));
+    }
+    public function orderCancel($id){
+        $order=Order::findOrFail($id);
+        $order->delete();
+        return redirect()->back()->with('success','Order Canceled Successfully');;
     }
     
 }

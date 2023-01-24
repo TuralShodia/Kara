@@ -16,7 +16,7 @@ class isLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->check()){
+        if(auth()->check() and auth()->user()->role_id==0){
             return redirect()->route('dashboard');
         }
         return $next($request);

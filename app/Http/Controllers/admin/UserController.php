@@ -68,7 +68,7 @@ class UserController extends Controller
         $data=$req->only(['name','email','role_id']);
         $data['password']=Hash::make($req->password);
         User::create($data);
-        return redirect('/home')->with('success','Registered Successfully');
+        return redirect('/')->with('success','Registered Successfully');
 
     }  
     public function logout(){

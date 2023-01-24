@@ -83,7 +83,7 @@ Route::group(['prefix'=>'/admin'], function(){
         });
     });
 
-      Route::get('/home',[FrontController::class,'index'])->name('home');
+      Route::get('/',[FrontController::class,'index'])->name('home');
       Route::get('/books',[FrontController::class,'books'])->name('front.book');
       Route::get('/books-single/{book}',[FrontController::class,'booksSingle'])->name('book.single');
       Route::get('/news',[FrontController::class,'news'])->name('front.news');
@@ -99,6 +99,8 @@ Route::group(['prefix'=>'/admin'], function(){
       Route::post('/user/login-submit',[UserController::class,'loginSubmit'])->name('user.login.submit');
       Route::group(['middleware'=>'userLogin'] ,function(){
         Route::get('/order/{id}',[AdminController::class, 'order'])->name('front.order');
+        Route::get('/order/table/{id}',[AdminController::class, 'orders'])->name('front.orders');
+        Route::get('/order/cancel/{id}',[AdminController::class, 'orderCancel'])->name('order.cancel');
       });
       
       

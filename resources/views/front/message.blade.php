@@ -8,12 +8,22 @@
     </div>
     <form method="post" action="{{route('front.message.submit')}}">
         @csrf
-        <div class="subscribe-wrapper" style="max-width: 850px">
+        <div class="subscribe-wrapper" style="max-width: 800px">
+            <div class="form-group">
             <input name="name"   class="form-control" placeholder="Name">
+            </div>
+            <div class="form-group">
             <input name="surname" class="form-control" placeholder="Surname ">
+            </div>
+            <div class="form-group">
             <input name="email" class="form-control" placeholder="Email Address">
+            </div>
+            <div class="form-group">
             <input name="phone" class="form-control" placeholder="Phone Number">
-            <input name="message" class="form-control" placeholder="Message ">            
+            </div>
+            <div class="form-group" style="margin-left: 40px;">
+            <textarea name="message" class="form-control" placeholder="Message" rows="4"  ></textarea>
+            </div>        
         </div>
             @if(session()->has('success'))
                 <div class="alert alert-success">
