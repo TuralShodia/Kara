@@ -42,59 +42,59 @@ class BookController extends Controller
         return redirect()->back()->with('success','Book Inserted Successfully');
     }
     
-public function edit($id)
-{
-    $book=Book::findOrFail($id);
-    $categories=Category::all();
+    public function edit($id)
+    {
+        $book=Book::findOrFail($id);
+        $categories=Category::all();
 
-    return view('admin/books/update',compact('book','categories'));
-}
-
-public function update($id, BookUpdateRequest $req)
-{
-    
-   try {   
-    $data=$req->all();
-    $books=Book::findOrFail($id);
-    $books->update([
-        'name'=>$req->name,
-        'year'=>$req->year,
-        'pages'=>$req->pages,
-        'writer'=>$req->writer,
-        'language'=>$req->language,
-        'category_id'=>$req->category_id,
-    ]);
-    if($req->hasFile('image')){
-        request()->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-             ]);
-        $ext=$req->image->extension();
-        $filename=rand(1,100).time().'.'. $ext ;
-        $fileNamewithUpload = "book/".$filename;
-        $req->image->move('book'  , $filename);
-        $data['image']=$fileNamewithUpload;
-        // if(File::exists($books->image))
-        // {
-        //     File::delete($books->image);
-        // } }
-        $books->update(['image'=>$data['image']]);
-       
+        return view('admin/books/update',compact('book','categories'));
     }
-     return redirect()->back()->with('success','Book Updated Successfully');    
-    }catch (Throwable $e) {
-        report($e);
-        return false;
+
+    public function update($id, BookUpdateRequest $req)
+    {
+        
+    try {   
+        $data=$req->all();
+        $books=Book::findOrFail($id);
+        $books->update([
+            'name'=>$req->name,
+            'year'=>$req->year,
+            'pages'=>$req->pages,
+            'writer'=>$req->writer,
+            'language'=>$req->language,
+            'category_id'=>$req->category_id,
+        ]);
+        if($req->hasFile('image')){
+            request()->validate([
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                ]);
+            $ext=$req->image->extension();
+            $filename=rand(1,100).time().'.'. $ext ;
+            $fileNamewithUpload = "book/".$filename;
+            $req->image->move('book'  , $filename);
+            $data['image']=$fileNamewithUpload;
+            // if(File::exists($books->image))
+            // {
+            //     File::delete($books->image);
+            // } }
+            $books->update(['image'=>$data['image']]);
+        
         }
-    
-}
-public function delete($id)
-{
-    $books=Book::findOrFail($id);
-    if(File::exists($books->image))
-        {
-            File::delete($books->image);
-        }
-    $books->delete();
-    return redirect()->route('book')->with('success','Book Deleted Successfully');;
-}
+        return redirect()->back()->with('success','Book Updated Successfully');    
+        }catch (Throwable $e) {
+            report($e);
+            return false;
+            }
+        
+    }
+    public function delete($id)
+    {
+        $books=Book::findOrFail($id);
+        if(File::exists($books->image))
+            {
+                File::delete($books->image);
+            }
+        $books->delete();
+        return redirect()->route('book')->with('success','Book Deleted Successfully');;
+    }
 }

@@ -11,11 +11,14 @@ use App\Http\Controllers\admin\{
     NewsController,
     ContactController,
     CategoriesController,
+    SliderController,
+    TestimonialController,
     UserController
 };
 use App\Http\Controllers\front\FrontController;
 use App\Http\Controllers\MessageController;
 use App\Models\Message;
+use App\Models\Testimonial;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +45,7 @@ Route::group(['prefix'=>'/admin'], function(){
           Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
   
           Route::get('/message',[MessageController::class,'index'])->name('message');
-  
+          Route::get('/message/delete/{id}',[MessageController::class, 'delete'])->name('message.delete');
           
           Route::get('/orders',[AdminController::class, 'orderTable'])->name('order');
           Route::get('/orders/delete/{id}',[AdminController::class, 'delete'])->name('order.delete');
@@ -69,10 +72,22 @@ Route::group(['prefix'=>'/admin'], function(){
           Route::post('/book/update/{id}',[BookController::class, 'update'])->name('book.update');
           Route::get('/book/delete/{id}',[BookController::class, 'delete'])->name('book.delete');
 
+          Route::get('/testimonial',[TestimonialController::class, 'index'])->name('testimonial');
+          Route::post('/testimonial',[TestimonialController::class, 'store'])->name('testimonial.submit');
+          Route::get('/testimonial/edit/{id}',[TestimonialController::class, 'edit'])->name('testimonial.edit');
+          Route::post('/testimonial/update/{id}',[TestimonialController::class, 'update'])->name('testimonial.update');
+          Route::get('/testimonial/delete/{id}',[TestimonialController::class, 'delete'])->name('testimonial.delete');
+
+          Route::get('/slider',[SliderController::class, 'index'])->name('slider');
+          Route::post('/slider',[SliderController::class, 'store'])->name('slider.submit');
+          Route::get('/slider/edit/{id}',[SliderController::class, 'edit'])->name('slider.edit');
+          Route::post('/slider/update/{id}',[SliderController::class, 'update'])->name('slider.update');
+          Route::get('/slider/delete/{id}',[SliderController::class, 'delete'])->name('slider.delete');
+
           Route::get('/abouts/edit',[AboutController::class, 'index'])->name('about');
           Route::post('/abouts/update',[AboutController::class, 'update'])->name('about.update');
   
-          Route::get('/message/delete/{id}',[MessageController::class, 'delete'])->name('message.delete');
+          
 
           Route::get('/users',[UserController::class,'index'])->name('user');
           Route::post('/users',[UserController::class, 'store'])->name('user.submit');

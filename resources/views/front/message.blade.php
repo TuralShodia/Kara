@@ -30,11 +30,13 @@
                     {{ session()->get('success') }}
                 </div>
             @endif
-            @if(session()->has('errors'))
-                <div class="alert alert-danger">
-                {{ session()->get('errors') }}
-                </div>
-            @endif 
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    {{$error}} <br>
+                @endforeach
+            </div>
+            @endif
         <div style="text-align: center">
             <button type="submit" class="btn btn-primary">send</button>
         </div>

@@ -17,7 +17,7 @@ class AuthController extends Controller
             "name" => $req->name , 
             "password" => $req->password,
             'role_id'=>function( $query){
-             $query->where('role_id',0);
+            $query->where('role_id',0);
             }
          ]);
         if($auth) {
