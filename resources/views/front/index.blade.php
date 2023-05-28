@@ -1,42 +1,127 @@
 @extends('front/layout/master')
 
 @section('content')
-<div>
+
+      <!--banner section start -->
+      <div class="banner_section layout_padding">
+        <div id="my_slider" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+              <div class="carousel-item active">
+                 <div class="container">
+                    <div class="banner_taital_main">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
+                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                             <div class="btn_main">
+                                <div class="about_bt active"><a href="#">About Us</a></div>
+                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
+                             </div>
+                          </div>
+                          <div class="col-md-6">
+                             <div class="image_1"><img src="images/img-1.png"></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel-item">
+                 <div class="container">
+                    <div class="banner_taital_main">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
+                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                             <div class="btn_main">
+                                <div class="about_bt active"><a href="#">About Us</a></div>
+                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
+                             </div>
+                          </div>
+                          <div class="col-md-6">
+                             <div class="image_1"><img src="images/img-1.png"></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+              <div class="carousel-item">
+                 <div class="container">
+                    <div class="banner_taital_main">
+                       <div class="row">
+                          <div class="col-md-6">
+                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
+                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                             <div class="btn_main">
+                                <div class="about_bt active"><a href="#">About Us</a></div>
+                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
+                             </div>
+                          </div>
+                          <div class="col-md-6">
+                             <div class="image_1"><img src="images/img-1.png"></div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+           <i class="fa fa-arrow-left" style="font-size:24px"></i>
+           </a>
+           <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+           <i class="fa fa-arrow-right" style="font-size:24px"></i>
+           </a>
+        </div>
+     </div>
+     <!--banner section end -->
+     </div>
+     <!--header section end -->
+
+
 @include('front.widget.about')
-</div>
-    <!-- page-header -->
-    <!-- end of page header -->
+
     @if(session()->has('success'))
     <div class="alert alert-success">
         {{ session()->get('success') }}
     </div>
-@endif
-@if(session()->has('errors'))
-<div class="alert alert-danger">
-    {{ session()->get('errors') }}
-</div>
-@endif 
+    @endif
+
+    @if(session()->has('errors'))
+    <div class="alert alert-danger">
+        {{ session()->get('errors') }}
+    </div>
+    @endif 
+
+    
+    
+    @if ($news->count()>1) 
+    <div class="services_section layout_padding">
+        <div class="container">
+           <h1 class="services_taital"><span style="color: #fcce2d">Our</span> Courses</h1>
+           <div class="services_section_2">
+              <div class="row">
+                @foreach ($news as $item)
+                    <div class="col-md-6">
+                        <a href="{{route('front.news.single',$item->id)}}" class="feature-post-item">
+                            <div class="image_main">
+                            <img src="{{$item->image}}" class="image_8" style="width:100%">
+                            <div class="text_main">
+                                <div class="seemore_text">{{$item->title}}</div>
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+              </div>
+           </div>
+        </div>            
+    </div>
+    @endif
+
+    <hr>
+
+    @if ($books->count()>0)
     <div class="container">
-        @if ($news->count()>1)
-           <section>
-                <div class="feature-posts" >
-                    <a href="{{route('front.news')}}" class="feature-post-item">                       
-                        <span>Featured News</span>
-                    </a>
-                    @foreach ($news as $item)
-                    <a href="{{route('front.news.single',$item->id)}}" class="feature-post-item">
-                        <img src="{{$item->image}}" height="250px" width="" class="w-100" alt="">
-                        <div class="feature-post-caption">{{$item->title}}</div>
-                    </a>
-                    @endforeach
-                </div>
-            </section> 
-        @endif
-        
-        <hr>
-        
-        @if ($books->count()>0)
-        <div class="page-container">
+        <div class="blog_section layout_padding">
             <div class="page-content">
                 <hr>
                 <div class="row">    
@@ -52,22 +137,64 @@
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
                                 <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
                             </div>
-                            
-                            <div class="card-footer p-0 text-center">
                                 <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
-                            </div>                  
                         </div>
                     </div>
                     @endforeach                   
                     
                 </div>
-                <form action="{{route('front.book')}}">
-                    @csrf
-                <button class="btn btn-primary btn-block my-4" type="submit">Load More Posts</button>
-                </form>
+                <a href="{{route('front.book')}}" class="btn btn-primary btn-block my-4" type="submit">Load More Books</a>
             </div>
         </div>
-        @endif
     </div>
+    @endif
 
+    <!-- blog section end -->
+    <!-- client section start -->
+    
+    <div class="blog_section layout_padding">
+        <div id="main_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                @if (isset($testimonials))
+                @foreach ($testimonials as $testimonial)
+
+                <div class="carousel-item active">
+                    <div class="container">
+                        <h1 class="client_taital">Testimonial</h1>
+                        <div class="client_section_2">
+                            <div class="client_left">
+                                <div><img src="{{$testimonial->image}}" class="client_img"></div>
+                            </div>
+                            <div class="client_right">
+                                <h3 class="client_name">{{$testimonial->name}}</h3>
+                                <p class="client_text">{{$testimonial->description}}</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+
+                <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right" style="font-size:24px"></i>
+                </a>
+            </div>
+            <!-- client section end -->
+            <!-- newsletter section start -->
+            <div class="newsletter_section layout_padding">
+                <div class="container">
+                    <div class="newsletter_main">
+                        <h1 class="newsletter_taital">Get<br> Your free consuting </h1>
+                        <div class="get_quote_bt"><a href="#">Get A Quote</a></div>
+                    </div>
+                    <p class="dolor_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+                </div>
+            </div>
+            <!-- newsletter section end -->
+        </div>
+    </div>
 @endsection 

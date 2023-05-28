@@ -3,8 +3,9 @@
 
     <!-- page-header -->
     <!-- end of page header -->
+<div class="container">
     <div class="subscribe-wrapper" >
-    <h6 class="sidebar-title mt-5 mb-2">Messages</h6>
+    <h1 class="sidebar-title mt-5 mb-2">Messages</h1>
     </div>
     <form method="post" action="{{route('front.message.submit')}}">
         @csrf
@@ -21,7 +22,7 @@
             <div class="form-group">
             <input name="phone" class="form-control" placeholder="Phone Number">
             </div>
-            <div class="form-group" style="margin-left: 40px;">
+            <div class="form-group">
             <textarea name="message" class="form-control" placeholder="Message" rows="4"  ></textarea>
             </div>        
         </div>
@@ -44,6 +45,6 @@
     </form>
     </h6>
 
-
+</div>
     <!-- Page Footer -->
 @endsection
