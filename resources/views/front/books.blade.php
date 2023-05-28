@@ -10,12 +10,11 @@
         <div class="page-container">
             <div class="page-content">
           
+                @include('front.widget.category')
                 <hr>
                 <div class="row">
                     @foreach ($books as $book)                       
-   
                     <div class="col-lg-6">
-                        
                         <div class="card text-center mb-5">
                             <div class="card-header ">                                   
                                 <div class="blog-media">
@@ -25,8 +24,7 @@
                             <div class="card-body ">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
                                 <small class="small text-muted">{{$book->created_at}}
-                                    <span class="px-2">-</span>
-                                    <a href="#" class="text-muted">64 Comments</a>
+                                    <span class="px-2">Category:{{$book->category->name}}</span>
                                 </small>
                                 <p class="my-2"></p>
                             </div>

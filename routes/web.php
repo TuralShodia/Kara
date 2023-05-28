@@ -101,6 +101,9 @@ Route::group(['prefix'=>'/admin'], function(){
       Route::get('/',[FrontController::class,'index'])->name('home');
       Route::get('/books',[FrontController::class,'books'])->name('front.book');
       Route::get('/books-single/{book}',[FrontController::class,'booksSingle'])->name('book.single');
+
+      Route::get('/books/{id}',[FrontController::class,'category'])->name('category');
+
       Route::get('/news',[FrontController::class,'news'])->name('front.news');
       Route::get('/news-single/{news}',[FrontController::class,'newsSingle'])->name('front.news.single');
       Route::get('/about us',[FrontController::class,'about'])->name('front.about');

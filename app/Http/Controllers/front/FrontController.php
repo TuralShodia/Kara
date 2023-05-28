@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Models\{About, Book,News,Message};
+use App\Models\{About, Book, Category, News,Message};
 use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
@@ -16,7 +16,16 @@ class FrontController extends Controller
     }
     public function books(){
         $books=Book::all();
-        return view('front.books',compact('books')); 
+        $categories = Category::query()->get();
+
+        return view('front.books',compact('books','categories')); 
+    }
+
+    public function category($id){
+        $books=Book::query()->where('category_id','=',$id)->get();
+        $categories = Category::query()->get();
+
+        return view('front.books',compact('books','categories')); 
     }
     public function booksSingle($id){
         $book=Book::findOrFail($id);
