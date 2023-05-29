@@ -6,7 +6,9 @@
       <div class="banner_section layout_padding">
         <div id="my_slider" class="carousel slide" data-ride="carousel">
            <div class="carousel-inner">
-              <div class="carousel-item active">
+            @if (isset($sliders))
+            @foreach ($sliders as $slider)
+              <div class="carousel-item @if($loop->first) active @endif">
                  <div class="container">
                     <div class="banner_taital_main">
                        <div class="row">
@@ -19,51 +21,15 @@
                              </div>
                           </div>
                           <div class="col-md-6">
-                             <div class="image_1"><img src="images/img-1.png"></div>
+                             <div class="image_1"><img src="{{$slider->image}}" height="200px" width="400px"></div>
                           </div>
                        </div>
                     </div>
                  </div>
               </div>
-              <div class="carousel-item">
-                 <div class="container">
-                    <div class="banner_taital_main">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
-                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                             <div class="btn_main">
-                                <div class="about_bt active"><a href="#">About Us</a></div>
-                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
-                             </div>
-                          </div>
-                          <div class="col-md-6">
-                             <div class="image_1"><img src="images/img-1.png"></div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="carousel-item">
-                 <div class="container">
-                    <div class="banner_taital_main">
-                       <div class="row">
-                          <div class="col-md-6">
-                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
-                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                             <div class="btn_main">
-                                <div class="about_bt active"><a href="#">About Us</a></div>
-                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
-                             </div>
-                          </div>
-                          <div class="col-md-6">
-                             <div class="image_1"><img src="images/img-1.png"></div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-           </div>
+              @endforeach
+              @endif
+            </div>
            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
            <i class="fa fa-arrow-left" style="font-size:24px"></i>
            </a>
@@ -77,7 +43,7 @@
      <!--header section end -->
 
 
-@include('front.widget.about')
+    @include('front.widget.about')
 
     @if(session()->has('success'))
     <div class="alert alert-success">
@@ -151,14 +117,12 @@
 
     <!-- blog section end -->
     <!-- client section start -->
-    
-    <div class="blog_section layout_padding">
+    <div class="blog_section layout_padding" style="background-color: black">
         <div id="main_slider" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 @if (isset($testimonials))
                 @foreach ($testimonials as $testimonial)
-
-                <div class="carousel-item active">
+                <div class="carousel-item @if($testimonial->id) active @endif">
                     <div class="container">
                         <h1 class="client_taital">Testimonial</h1>
                         <div class="client_section_2">
@@ -167,7 +131,7 @@
                             </div>
                             <div class="client_right">
                                 <h3 class="client_name">{{$testimonial->name}}</h3>
-                                <p class="client_text">{{$testimonial->description}}</p>
+                                <p class="client_text" style="color: aliceblue">{{$testimonial->description}}</p>
                             </div>
                         </div>
                         </div>
@@ -175,26 +139,26 @@
                 </div>
                 @endforeach
                 @endif
-
-                <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-                </a>
-                <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                <i class="fa fa-angle-right" style="font-size:24px"></i>
-                </a>
             </div>
+            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+                <i class="fa fa-angle-right" style="font-size:24px"></i>
+            </a>
             <!-- client section end -->
             <!-- newsletter section start -->
-            <div class="newsletter_section layout_padding">
+            <div class="newsletter_section layout_padding" style="background-color: ">
                 <div class="container">
                     <div class="newsletter_main">
                         <h1 class="newsletter_taital">Get<br> Your free consuting </h1>
                         <div class="get_quote_bt"><a href="#">Get A Quote</a></div>
                     </div>
-                    <p class="dolor_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+                    <p class="dolor_text" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
                 </div>
             </div>
-            <!-- newsletter section end -->
+            <div class="newsletter_section layout_padding" style="background-color: ">
+            </div>
         </div>
     </div>
 @endsection 

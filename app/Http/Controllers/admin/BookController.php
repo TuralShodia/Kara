@@ -63,6 +63,7 @@ class BookController extends Controller
             'writer'=>$req->writer,
             'language'=>$req->language,
             'category_id'=>$req->category_id,
+            'description'=>$req->description,
         ]);
         if($req->hasFile('image')){
             request()->validate([

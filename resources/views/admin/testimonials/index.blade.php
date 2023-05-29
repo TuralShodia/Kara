@@ -84,11 +84,6 @@
                                         <tr>
                                             <th class="border-top-0">Image</th>
                                             <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Writer</th>
-                                            <th class="border-top-0">Language</th>
-                                            <th class="border-top-0">Year</th>
-                                            <th class="border-top-0">Pages</th>
-                                            <th class="border-top-0">Category</th>
                                             <th class="border-top-0">Action</th>
  
                                         </tr>
@@ -100,15 +95,6 @@
 
                                             <td><img style="width: 80px" src="{{asset($testimonial->image)}}"></td>
                                             <td>{{$testimonial->name}}</td>
-                                            <td>{{$testimonial->writer}}</td>
-                                            <td>{{$testimonial->language}}</td>
-                                            <td>{{$testimonial->year}}</td>
-                                            <td>{{$testimonial->pages}}</td>
-                                            @if ($testimonial->category_id!=0)
-                                              <td>{{$testimonial->category->name}}</td> 
-                                            @else
-                                                <td>null</td>
-                                            @endif
                                             <td>
                                                 <form action="{{ route('testimonial.edit',$testimonial->id) }}">
                                                     <button type="submit" class="btn btn-primary">Edit</button>

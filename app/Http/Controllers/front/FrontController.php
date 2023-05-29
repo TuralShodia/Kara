@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Models\{About, Book, Category, News,Message};
+use App\Models\{About, Book, Category, News,Message, Slider, Testimonial};
 use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
@@ -11,8 +11,10 @@ class FrontController extends Controller
         $about=About::first();
         $news=News::skip(0)->take(2)->get();
         $books = Book::skip(0)->take(4)->get();
-        // $books=Book::all();
-        return view('front.index', compact('books','news','about'));
+        $sliders = Slider::query()->get();
+        $testimonials = Testimonial::query()->get();
+
+        return view('front.index', compact('books','news','about','sliders','testimonials'));
     }
     public function books(){
         $books=Book::all();

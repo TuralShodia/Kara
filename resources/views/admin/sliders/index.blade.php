@@ -83,11 +83,6 @@
                                         <tr>
                                             <th class="border-top-0">Image</th>
                                             <th class="border-top-0">Name</th>
-                                            <th class="border-top-0">Writer</th>
-                                            <th class="border-top-0">Language</th>
-                                            <th class="border-top-0">Year</th>
-                                            <th class="border-top-0">Pages</th>
-                                            <th class="border-top-0">Category</th>
                                             <th class="border-top-0">Action</th>
  
                                         </tr>
@@ -99,15 +94,6 @@
 
                                             <td><img style="width: 80px" src="{{asset($slider->image)}}"></td>
                                             <td>{{$slider->name}}</td>
-                                            <td>{{$slider->writer}}</td>
-                                            <td>{{$slider->language}}</td>
-                                            <td>{{$slider->year}}</td>
-                                            <td>{{$slider->pages}}</td>
-                                            @if ($slider->category_id!=0)
-                                              <td>{{$slider->category->name}}</td> 
-                                            @else
-                                                <td>null</td>
-                                            @endif
                                             <td>
                                                 <form action="{{ route('slider.edit',$slider->id) }}">
                                                     <button type="submit" class="btn btn-primary">Edit</button>

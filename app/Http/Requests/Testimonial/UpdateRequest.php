@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'image'=>'required|mimes:png,jpg',
+            'image'=>'mimes:png,jpg',
             'description'=>'required'
         ];
     }

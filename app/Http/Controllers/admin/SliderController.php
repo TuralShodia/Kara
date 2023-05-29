@@ -45,7 +45,7 @@ class SliderController extends Controller
     {
         $slider=Slider::findOrFail($id);
 
-        return view('admin/sliders/update',compact('slider','categories'));
+        return view('admin/sliders/update',compact('slider'));
     }
 
     public function update($id, UpdateRequest $req)
@@ -55,12 +55,8 @@ class SliderController extends Controller
         $data=$req->all();
         $sliders=Slider::findOrFail($id);
         $sliders->update([
+            'description'=>$req->description,
             'name'=>$req->name,
-            'year'=>$req->year,
-            'pages'=>$req->pages,
-            'writer'=>$req->writer,
-            'language'=>$req->language,
-            'category_id'=>$req->category_id,
         ]);
         if($req->hasFile('image')){
             request()->validate([

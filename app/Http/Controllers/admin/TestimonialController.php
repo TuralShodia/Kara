@@ -44,7 +44,7 @@ class TestimonialController extends Controller
     {
         $testimonial=Testimonial::findOrFail($id);
 
-        return view('admin/testimonials/update',compact('testimonial','categories'));
+        return view('admin/testimonials/update',compact('testimonial'));
     }
 
     public function update($id, UpdateRequest $req)
@@ -55,11 +55,7 @@ class TestimonialController extends Controller
         $testimonials=Testimonial::findOrFail($id);
         $testimonials->update([
             'name'=>$req->name,
-            'year'=>$req->year,
-            'pages'=>$req->pages,
-            'writer'=>$req->writer,
-            'language'=>$req->language,
-            'category_id'=>$req->category_id,
+            'description'=>$req->description,
         ]);
         if($req->hasFile('image')){
             request()->validate([
