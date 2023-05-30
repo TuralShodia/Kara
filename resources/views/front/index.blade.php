@@ -115,50 +115,36 @@
     </div>
     @endif
 
-    <!-- blog section end -->
+    @if (isset($testimonials))
     <!-- client section start -->
-    <div class="blog_section layout_padding" style="background-color: black">
-        <div id="main_slider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                @if (isset($testimonials))
-                @foreach ($testimonials as $testimonial)
-                <div class="carousel-item @if($testimonial->id) active @endif">
-                    <div class="container">
-                        <h1 class="client_taital">Testimonial</h1>
-                        <div class="client_section_2">
-                            <div class="client_left">
-                                <div><img src="{{$testimonial->image}}" class="client_img"></div>
-                            </div>
-                            <div class="client_right">
-                                <h3 class="client_name">{{$testimonial->name}}</h3>
-                                <p class="client_text" style="color: aliceblue">{{$testimonial->description}}</p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @endif
-            </div>
-            <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
-                <i class="fa fa-angle-left"></i>
-            </a>
-            <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
-                <i class="fa fa-angle-right" style="font-size:24px"></i>
-            </a>
-            <!-- client section end -->
-            <!-- newsletter section start -->
-            <div class="newsletter_section layout_padding" style="background-color: ">
+    <div class="client_section layout_padding">
+    <div id="main_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach ($testimonials as $testimonial)
+            <div class="carousel-item @if($loop->first) active @endif">
                 <div class="container">
-                    <div class="newsletter_main">
-                        <h1 class="newsletter_taital">Get<br> Your free consuting </h1>
-                        <div class="get_quote_bt"><a href="#">Get A Quote</a></div>
+                <h1 class="client_taital">Testimonial</h1>
+                <div class="client_section_2">
+                    <div class="client_left">
+                        <div><img src="{{$testimonial->image}}" class="client_img"></div>
                     </div>
-                    <p class="dolor_text" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
+                    <div class="client_right">
+                        <h3 class="client_name">{{$testimonial->name}}</h3>
+                        <p class="client_text">{!!$testimonial->description!!}</p>
+                    </div>
+                </div>
                 </div>
             </div>
-            <div class="newsletter_section layout_padding" style="background-color: ">
-            </div>
+            @endforeach
         </div>
+        <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+        <i class="fa fa-angle-right" style="font-size:24px"></i>
+        </a>
     </div>
+    </div>
+    <!-- client section end -->
+    @endif
 @endsection 
