@@ -18,7 +18,7 @@
                         <div class="card text-center mb-5">
                             <div class="card-header ">                                   
                                 <div class="blog-media">
-                                    <img src="{{$book->image}}" alt="" class="w-100">
+                                    <img src="{{asset($book->image)}}" alt="" class="w-100">
                                 </div>  
                             </div>
                             <div class="card-body ">

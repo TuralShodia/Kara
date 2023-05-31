@@ -29,7 +29,7 @@
                         @foreach ($orders as $order)  
                         @if ($order)
                       <tr>
-                        <th scope="row"><img src="{{$order->book_image}}" height="100" width="120" alt=""></th>
+                        <th scope="row"><img src="{{asset($order->book_image)}}" height="100" width="120" alt=""></th>
                         <td>{{$order->book_name}}</td>
                         <td>{{$order->created_at}}</td>
                         <td>{{$order->promocode}}</td>
