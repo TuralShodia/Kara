@@ -16,7 +16,7 @@ class noLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!auth()->check()){
+        if(!auth()->check() or auth()->user()->role_id==1){
             return redirect()->route('login');
         }
         return $next($request);
