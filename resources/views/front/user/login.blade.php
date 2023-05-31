@@ -15,10 +15,6 @@
                         <input name="password" type="password" class="form-control" placeholder="Password"> 
                     </div>
                 </div>
-                
-                @if (session('danger'))
-                <div style="color: red">{{session('danger')}}</div> 
-                @endif
                 <div class="mt-3 text-center" >
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>

@@ -32,9 +32,6 @@
             <div style="" class="col-lg-12 col-xlg-9 col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-success">AZ</button>
-                        <button class="btn btn-success">EN</button> 
-                        <button class="btn btn-success">RU</button> <hr>
                         <form class="form-horizontal form-material" action="{{route('categories.submit')}}" method="POST">
                             @csrf
                             <div class="form-group mb-4">

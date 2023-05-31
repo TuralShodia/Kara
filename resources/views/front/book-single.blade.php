@@ -25,10 +25,10 @@
                     </div>          
                     <div class="card-body border-top">
                         @if(session()->has('success'))
-                                        <div class="alert alert-success">
-                                            {{ session()->get('success') }}
-                                        </div>
-                                    @endif
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <form action="{{route('front.order',$book->id)}}">
                             <button type="submit" class="btn btn-primary">Order</button>
                         </form>                    
