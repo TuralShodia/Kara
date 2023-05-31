@@ -47,19 +47,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="{{route('dashboard')}}">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!-- Dark Logo icon -->
-                            <img src="{{asset('adminn/plugins/images/logo-icon.png')}}" alt="homepage" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span class="logo-text">
-                            <!-- dark Logo text -->
-                            <img src="{{asset('adminn/plugins/images/logo-text.png')}}" alt="homepage" />
-                        </span>
-                    </a>
+                    
                     <!-- ============================================================== -->
                     <!-- End Logo -->
                     <!-- ============================================================== -->
@@ -78,6 +66,7 @@
                             <a class="nav-toggler nav-link waves-effect waves-light text-white"
                                 href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                         </li>
+                    
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -90,17 +79,10 @@
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li>
-                            <a class="profile-pic" href="{{route('profile')}}">
-                                <img src="{{asset('adminn/plugins/images/users/varun.jpg')}}" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">{{Auth::user()->name}}</span></a>
-                        </li>
-                        <li>
                             <button style="color:red">
                                 <a href="{{route('logout')}}">
                                     logout
                                 </a>
-                                
-
                             </button>
                         </li>
                         <!-- ============================================================== -->

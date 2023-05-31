@@ -39,46 +39,52 @@
          <div class="header_bg">
             <div class="container">
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <a class="logo" href="index.html"><img src="images/logo.png"></a>
+                  <a class="logo" href="{{route('home')}}"><img src="https://naa.edu.az/wp-content/uploads/2021/11/logo_text_light.svg"></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav">                     
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('home')}}">Home</a>
+                            <a class="nav-link" href="{{route('home')}}">Ana Səhifə</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('front.about')}}">About</a>
+                            <a class="nav-link" href="{{route('front.about')}}">Haqqımızda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('front.book')}}">Books</a>
+                            <a class="nav-link" href="{{route('front.book')}}">Kitablar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('front.news')}}">News</a>
+                            <a class="nav-link" href="{{route('front.news')}}">Xəbərlər</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('front.message')}}">Message</a>
+                            <a class="nav-link" href="{{route('front.message')}}">Əlaqə</a>
                         </li>
                         
                         @auth
+                        @if (Auth::user()->role_id==1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Orders</a>
                             </li> 
+                        @endif
                         @endauth
                     </ul>
                     <div class="navbar-nav ml-auto">
                         <li class="nav-item">
                             @auth
-    
+                            @if (Auth::user()->role_id==1)
+                                
                             <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Logout</a>
-                        
+
+                            @endif
                             @endauth
     
-                            @guest
+                            @if(!Auth::user() or Auth::user()->role_id==0)
+
                             <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Login</a>
                             <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Sign up</a>
-                            @endguest
+
+                            @endif
                        
                           
                         </li>

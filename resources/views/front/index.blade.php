@@ -1,7 +1,10 @@
 @extends('front/layout/master')
-
 @section('content')
-
+    @if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+    @endif
       <!--banner section start -->
       <div class="banner_section layout_padding">
         <div id="my_slider" class="carousel slide" data-ride="carousel">
@@ -11,13 +14,12 @@
               <div class="carousel-item @if($loop->first) active @endif">
                  <div class="container">
                     <div class="banner_taital_main">
-                       <div class="row">
+                       <div class="row"> 
                           <div class="col-md-6">
-                             <h1 class="banner_taital">Casinal Educations Coachings</h1>
-                             <p class="banner_text">Eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                             <h1 class="banner_taital">{{$slider->name}}</h1>
+                             <p class="banner_text">{!!$slider->description!!}</p>
                              <div class="btn_main">
-                                <div class="about_bt active"><a href="#">About Us</a></div>
-                                <div class="quote_bt"><a href="#">Get A Quote</a></div>
+                                <div class="about_bt active"><a href="{{route('front.about')}}">About Us</a></div>
                              </div>
                           </div>
                           <div class="col-md-6">
@@ -42,14 +44,10 @@
      </div>
      <!--header section end -->
 
-
+     
     @include('front.widget.about')
 
-    @if(session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-    @endif
+
 
     @if(session()->has('errors'))
     <div class="alert alert-danger">

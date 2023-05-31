@@ -51,13 +51,19 @@ class AdminController extends Controller
     }
 
     public function order($id){
-          $characters = '123456ABCDEF';
-        Order::create([
-            'book_id'=>$id,
-            'user_id'=>Auth::id(),
-            'promocode'=>substr(str_shuffle($characters), 0, 6)
-        ]);
-        return redirect()->back()->with('success','Book Ordered Successfully ');  
+        if(Auth::user() and Auth::user()->role_id==1)
+        {
+            $characters = '123456ABCDEF';
+
+            Order::create([
+                'book_id'=>$id,
+                'user_id'=>Auth::id(),
+                'promocode'=>substr(str_shuffle($characters), 0, 6)
+            ]);
+            return redirect()->back()->with('success','Book Ordered Successfully ');  
+        }else{
+            return redirect()->route('user.login');  
+        }
         
     }
     public function delete($id)
