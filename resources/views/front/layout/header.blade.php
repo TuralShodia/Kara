@@ -64,7 +64,7 @@
                         @auth
                         @if (Auth::user()->role_id==1)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Orders</a>
+                                <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Sifarişlər</a>
                             </li> 
                         @endif
                         @endauth
@@ -74,15 +74,15 @@
                             @auth
                             @if (Auth::user()->role_id==1)
                                 
-                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Logout</a>
+                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Çıxış</a>
 
                             @endif
                             @endauth
     
                             @if(!Auth::user() or Auth::user()->role_id==0)
 
-                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Login</a>
-                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Sign up</a>
+                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Daxil ol</a>
+                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Qeydiyyatdan keçin</a>
 
                             @endif
                        

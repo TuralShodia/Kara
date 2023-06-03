@@ -25,8 +25,6 @@
                             <div class="card-body ">
                                 <h5 class="card-title mb-2">{{$item->name}}</h5> 
                                 <small class="small text-muted">{{$item->created_at}}
-                                    <span class="px-2">-</span>
-                                    <a href="#" class="text-muted">64 Comments</a>
                                 </small>
                                 <p class="my-2"></p>
                             </div>

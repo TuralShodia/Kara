@@ -18,9 +18,9 @@
                 <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Book Name</th>
-                        <th scope="col">Date</th>
+                        <th scope="col">Şəkil</th>
+                        <th scope="col">Kitab Adı</th>
+                        <th scope="col">Tarix</th>
                         <th scope="col">Promocode</th>
                         <th scope="col"></th>
                       </tr>
@@ -36,7 +36,7 @@
                         <td>
                             <a href="{{route('order.cancel',$order->id)}}" >
                                <button class="btn btn-danger">
-                                Cancel Order
+                                Sifarişi ləğv et
                             </button> 
                             </a>
                         </td>

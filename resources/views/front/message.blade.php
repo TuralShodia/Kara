@@ -39,7 +39,7 @@
             </div>
             @endif
         <div style="text-align: center">
-            <button type="submit" class="btn btn-primary">send</button>
+            <button type="submit" class="btn btn-primary">göndər</button>
         </div>
         
     </form>

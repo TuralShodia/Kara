@@ -24,7 +24,7 @@
                             <div class="card-body ">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
                                 <small class="small text-muted">{{$book->created_at}}
-                                    <span class="px-2">Category:{{$book->category->name}}</span>
+                                    <span class="px-2">Kategoriya:{{$book->category->name}}</span>
                                 </small>
                                 <p class="my-2"></p>
                             </div>
