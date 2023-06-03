@@ -60,7 +60,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('front.message')}}">Əlaqə</a>
                         </li>
-                        
                         @auth
                         @if (Auth::user()->role_id==1)
                             <li class="nav-item">
@@ -73,20 +72,13 @@
                         <li class="nav-item">
                             @auth
                             @if (Auth::user()->role_id==1)
-                                
                             <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Çıxış</a>
-
                             @endif
                             @endauth
-    
                             @if(!Auth::user() or Auth::user()->role_id==0)
-
                             <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Daxil ol</a>
-                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Qeydiyyatdan keçin</a>
-
+                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Qeydiyyat</a>
                             @endif
-                       
-                          
                         </li>
                     </div>
                   </div>

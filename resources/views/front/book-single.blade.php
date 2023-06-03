@@ -16,8 +16,8 @@
                         <h3 class="card-title mb-4"></h3>
                         <h6 class="card-title mb-4">Yazıçı:{{$book->writer}}</h6> 
                         <h6 class="card-title mb-4">Dil:{{$book->language}}</h6>
-                        <h6 class="card-title mb-4">Kategoriya:{{$book->category}}</h6>
-                        <h6 class="card-title mb-4">Il:{{$book->year}}</h6>
+                        <h6 class="card-title mb-4">Kategoriya:{{$book->category->name}}</h6>
+                        <h6 class="card-title mb-4">il:{{$book->year}}</h6>
                         <h6 class="card-title mb-4">{{$book->pages}} səhifə</h6>
                     </div>
                     <div class="card-body border-top">

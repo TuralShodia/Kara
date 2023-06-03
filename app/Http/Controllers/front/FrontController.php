@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\front;
 
-use App\Models\{About, Book, Category, News,Message, Slider, Testimonial};
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\{About, Book, Category, News,Message, Slider, Testimonial};
 
 class FrontController extends Controller
 {
@@ -48,6 +49,17 @@ class FrontController extends Controller
     public function about(){
         $about=About::first();
         return view('front.about',compact('about'));
+    }
+    public function search(Request $request)
+    {
+        $books = Book::where('books.name', 'like', '%'.trim($request->search).'%')
+            ->orWhere('writer', 'like', '%'.trim($request->search).'%')
+            ->orWhere('language', 'like', '%'.trim($request->search).'%')
+            ->orWhere('year', 'like', '%'.trim($request->search).'%')
+            ->get();
+        $categories = Category::query()->get();
+
+        return view('front.books', compact('books','categories'));
     }
     // public function registersubmit(){
     //     $this->validate(request(), [

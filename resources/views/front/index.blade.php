@@ -19,7 +19,7 @@
                              <h1 class="banner_taital">{{$slider->name}}</h1>
                              <p class="banner_text">{!!$slider->description!!}</p>
                              <div class="btn_main">
-                                <div class="about_bt active"><a href="{{route('front.about')}}">About Us</a></div>
+                                <div class="about_bt active"><a href="{{route('front.about')}}">Haqqımızda</a></div>
                              </div>
                           </div>
                           <div class="col-md-6">
@@ -60,7 +60,7 @@
     @if ($news->count()>1) 
     <div class="services_section layout_padding">
         <div class="container">
-           <h1 class="services_taital"><span style="color: #fcce2d">Our</span> Courses</h1>
+           <h1 class="services_taital">Xəbərlər</h1>
            <div class="services_section_2">
               <div class="row">
                 @foreach ($news as $item)
@@ -101,13 +101,13 @@
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
                                 <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
                             </div>
-                                <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                                <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">Ətraflı</a>
                         </div>
                     </div>
                     @endforeach                   
                     
                 </div>
-                <a href="{{route('front.book')}}" class="btn btn-primary btn-block my-4" type="submit">Load More Books</a>
+                <a href="{{route('front.book')}}" class="btn btn-primary btn-block my-4" type="submit">Ətraflı</a>
             </div>
         </div>
     </div>
@@ -121,7 +121,7 @@
             @foreach ($testimonials as $testimonial)
             <div class="carousel-item @if($loop->first) active @endif">
                 <div class="container">
-                <h1 class="client_taital">Testimonial</h1>
+                <h1 class="client_taital">Istifadəçi rəyləri</h1>
                 <div class="client_section_2">
                     <div class="client_left">
                         <div><img src="{{$testimonial->image}}" class="client_img"></div>

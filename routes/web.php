@@ -97,6 +97,7 @@ Route::group(['prefix'=>'/admin'], function(){
 
         });
     });
+    Route::get('/search',[FrontController::class,'search'])->name('search');
 
       Route::get('/',[FrontController::class,'index'])->name('home');
       Route::get('/books',[FrontController::class,'books'])->name('front.book');

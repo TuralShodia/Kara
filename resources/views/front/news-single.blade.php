@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-header pt-0">
                         <h3 class="card-title mb-4"></h3>
-                        <h6 class="card-title mb-4">Description:</h6>
+                        <h6 class="card-title mb-4">Açıqlama:</h6>
                         <p class="my-3">{{$news->description}}</p> 
                     </div>         
                 </div> 
