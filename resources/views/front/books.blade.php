@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body ">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
-                                <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
+                                <p class="my-2">{{ \Str::limit($book->description,150)}}</p>
                                 <small class="small text-muted">{{$book->created_at}}
                                 </small>
                                 <p class="my-2"></p>

@@ -37,7 +37,6 @@
       <!--header section start -->
       <div class="header_section">
          <div class="header_bg">
-            <div class="container">
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <a class="logo" href="{{route('home')}}"><img src="https://naa.edu.az/wp-content/uploads/2021/11/logo_text_light.svg"></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,16 +71,15 @@
                         <li class="nav-item">
                             @auth
                             @if (Auth::user()->role_id==1)
-                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Çıxış</a>
+                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-3">Çıxış</a>
                             @endif
                             @endauth
                             @if(!Auth::user() or Auth::user()->role_id==0)
-                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Daxil ol</a>
-                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Qeydiyyat</a>
+                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-3">Daxil ol</a>
+                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-3">Qeydiyyat</a>
                             @endif
                         </li>
                     </div>
                   </div>
                </nav>
-            </div>
          </div>

@@ -99,7 +99,7 @@
                             </div>
                             <div class="card-body px-0">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
-                                <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
+                                <p class="my-2">{{ \Str::limit($book->description,150)}}</p>
                             </div>
                                 <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">Ətraflı</a>
                         </div>
