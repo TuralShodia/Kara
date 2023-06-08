@@ -35,8 +35,8 @@
    </head>
    <body>
       <!--header section start -->
-      <div class="header_section">
-         <div class="header_bg">
+      <div class="header_section" style= "background-image:none">
+         <div class="header_bg" >
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <a class="logo" href="{{route('home')}}"><img src="https://naa.edu.az/wp-content/uploads/2021/11/logo_text_light.svg"></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

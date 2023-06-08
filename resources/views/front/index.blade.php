@@ -6,32 +6,19 @@
     </div>
     @endif
       <!--banner section start -->
-      <div class="banner_section layout_padding">
         <div id="my_slider" class="carousel slide" data-ride="carousel">
-           <div class="carousel-inner">
+            <div class="carousel-inner">
             @if (isset($sliders))
             @foreach ($sliders as $slider)
-              <div class="carousel-item @if($loop->first) active @endif">
-                 <div class="container">
-                    <div class="banner_taital_main">
-                       <div class="row"> 
-                          <div class="col-md-6">
-                             <h1 class="banner_taital">{{$slider->name}}</h1>
-                             <p class="banner_text">{!!$slider->description!!}</p>
-                             <div class="btn_main">
-                                <div class="about_bt active"><a href="{{route('front.about')}}">Haqqımızda</a></div>
-                             </div>
-                          </div>
-                          <div class="col-md-6">
-                             <div class="image_1"><img src="{{$slider->image}}" height="200px" width="400px"></div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              @endforeach
-              @endif
-            </div>
+                <div class="carousel-item @if($loop->first) active @endif" >
+                    <img class="d-block w-100" src="{{$slider->image}}" alt="First slide" style="height: 600px;width:2000px">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 style="color: black;font-size: 100px">{{$slider->name}}</h1>
+                        <p style="color: black;font-size: 20px">{!!$slider->description!!}</p>
+                    </div>                    
+                </div>
+            @endforeach
+            @endif
            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
            <i class="fa fa-arrow-left" style="font-size:24px"></i>
            </a>
@@ -122,12 +109,12 @@
             <div class="carousel-item @if($loop->first) active @endif">
                 <div class="container">
                 <h1 class="client_taital">Istifadəçi rəyləri</h1>
-                <div class="client_section_2">
+                <div class="client_container">
                     <div class="client_left">
-                        <div><img src="{{$testimonial->image}}" class="client_img"></div>
+                        <div><img src="{{$testimonial->image}}" class="client_img" height="100px" width="200px"></div>
                     </div>
                     <div class="client_right">
-                        <h3 class="client_name">{{$testimonial->name}}</h3>
+                        <h1 class="client_name">{{$testimonial->name}}</h1>
                         <p class="client_text">{!!$testimonial->description!!}</p>
                     </div>
                 </div>
