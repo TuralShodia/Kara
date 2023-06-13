@@ -14,10 +14,10 @@
                 <div class="card">
                     <div class="card-header pt-0">
                         <h3 class="card-title mb-4"></h3>
-                        <h6 class="card-title mb-4">Writer:{{$book->writer}}</h6> 
-                        <h6 class="card-title mb-4">Language:{{$book->language}}</h6>
-                        <h6 class="card-title mb-4">Writer:{{$book->writer}}</h6>
-                        <h6 class="card-title mb-4">Year:{{$book->year}}</h6>
+                        <h6 class="card-title mb-4">Yazıçı:{{$book->writer}}</h6> 
+                        <h6 class="card-title mb-4">Dil:{{$book->language}}</h6>
+                        <h6 class="card-title mb-4">Kategoriya:{{$book->category}}</h6>
+                        <h6 class="card-title mb-4">İl:{{$book->year}}</h6>
                         <h6 class="card-title mb-4">{{$book->pages}} pages</h6>
                     </div>
                     <div class="card-body border-top">

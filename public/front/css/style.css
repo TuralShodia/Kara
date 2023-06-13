@@ -34,7 +34,17 @@
 @import url(nice-select.css);
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
-
+.client_container {
+    display: flex;
+  }
+  
+  .client_left {
+    flex: 0 0 auto; /* Adjust the flex property as needed */
+  }
+  
+  .client_right {
+    flex: 1 1 auto; /* Adjust the flex property as needed */
+  }
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;

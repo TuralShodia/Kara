@@ -6,32 +6,19 @@
     </div>
     @endif
       <!--banner section start -->
-      <div class="banner_section layout_padding">
         <div id="my_slider" class="carousel slide" data-ride="carousel">
-           <div class="carousel-inner">
+            <div class="carousel-inner">
             @if (isset($sliders))
             @foreach ($sliders as $slider)
-              <div class="carousel-item @if($loop->first) active @endif">
-                 <div class="container">
-                    <div class="banner_taital_main">
-                       <div class="row"> 
-                          <div class="col-md-6">
-                             <h1 class="banner_taital">{{$slider->name}}</h1>
-                             <p class="banner_text">{!!$slider->description!!}</p>
-                             <div class="btn_main">
-                                <div class="about_bt active"><a href="{{route('front.about')}}">About Us</a></div>
-                             </div>
-                          </div>
-                          <div class="col-md-6">
-                             <div class="image_1"><img src="{{$slider->image}}" height="200px" width="400px"></div>
-                          </div>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              @endforeach
-              @endif
-            </div>
+                <div class="carousel-item @if($loop->first) active @endif" >
+                    <img class="d-block w-100" src="{{$slider->image}}" alt="First slide" style="height: 600px;width:2000px">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1 style="color: rgb(82, 6, 246);font-size: 100px">{{$slider->name}}</h1>
+                        <p style="color: rgb(25, 0, 255);font-size: 20px"> {!!$slider->description!!} </p>
+                    </div>                    
+                </div>
+            @endforeach
+            @endif
            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
            <i class="fa fa-arrow-left" style="font-size:24px"></i>
            </a>
@@ -60,7 +47,7 @@
     @if ($news->count()>1) 
     <div class="services_section layout_padding">
         <div class="container">
-           <h1 class="services_taital"><span style="color: #fcce2d">Our</span> Courses</h1>
+           <h1 class="services_taital">Xəbərlər</h1>
            <div class="services_section_2">
               <div class="row">
                 @foreach ($news as $item)
@@ -76,16 +63,18 @@
                     </div>
                 @endforeach
               </div>
-           </div>
+                <a href="{{route('front.news')}}" class="btn btn-primary btn-block my-4" type="submit">Bütün Xəbərlər</a>
+            </div>
         </div>            
     </div>
     @endif
 
-    <hr>
 
     @if ($books->count()>0)
     <div class="container">
         <div class="blog_section layout_padding">
+        <h1 class="services_taital">Kitablar</h1>
+
             <div class="page-content">
                 <hr>
                 <div class="row">    
@@ -99,15 +88,15 @@
                             </div>
                             <div class="card-body px-0">
                                 <h5 class="card-title mb-2">{{$book->name}}</h5> 
-                                <p class="my-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos saepe dolores et nostrum porro odit reprehenderit animi, est ratione fugit aspernatur ipsum. Nostrum placeat hic saepe voluptatum dicta ipsum beatae.</p>
+                                <p class="my-2">{{ \Str::limit($book->description,150)}}</p>
                             </div>
-                                <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">READ MORE</a>
+                                <a href="{{route('book.single',$book->id)}}" class="btn btn-outline-dark btn-sm">Ətraflı</a>
                         </div>
                     </div>
                     @endforeach                   
                     
                 </div>
-                <a href="{{route('front.book')}}" class="btn btn-primary btn-block my-4" type="submit">Load More Books</a>
+                <a href="{{route('front.book')}}" class="btn btn-primary btn-block my-4" type="submit">Ətraflı</a>
             </div>
         </div>
     </div>
@@ -121,13 +110,13 @@
             @foreach ($testimonials as $testimonial)
             <div class="carousel-item @if($loop->first) active @endif">
                 <div class="container">
-                <h1 class="client_taital">Testimonial</h1>
-                <div class="client_section_2">
+                <h1 class="client_taital">İstifadəçi rəyləri</h1>
+                <div class="client_container">
                     <div class="client_left">
-                        <div><img src="{{$testimonial->image}}" class="client_img"></div>
+                        <div><img src="{{$testimonial->image}}" class="client_img" height="100px" width="200px"></div>
                     </div>
                     <div class="client_right">
-                        <h3 class="client_name">{{$testimonial->name}}</h3>
+                        <h1 class="client_name">{{$testimonial->name}}</h1>
                         <p class="client_text">{!!$testimonial->description!!}</p>
                     </div>
                 </div>

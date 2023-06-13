@@ -35,9 +35,8 @@
    </head>
    <body>
       <!--header section start -->
-      <div class="header_section">
-         <div class="header_bg">
-            <div class="container">
+      <div class="header_section" style= "background-image:none">
+         <div class="header_bg" >
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
                   <a class="logo" href="{{route('home')}}"><img src="https://naa.edu.az/wp-content/uploads/2021/11/logo_text_light.svg"></a>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,11 +59,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('front.message')}}">Əlaqə</a>
                         </li>
-                        
                         @auth
                         @if (Auth::user()->role_id==1)
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Orders</a>
+                                <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Sifarişlər</a>
                             </li> 
                         @endif
                         @endauth
@@ -73,23 +71,15 @@
                         <li class="nav-item">
                             @auth
                             @if (Auth::user()->role_id==1)
-                                
-                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Logout</a>
-
+                            <a href="{{route('user.logout')}}" class="ml-4 btn btn-dark mt-1 btn-3">Çıxış</a>
                             @endif
                             @endauth
-    
                             @if(!Auth::user() or Auth::user()->role_id==0)
-
-                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Login</a>
-                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-sm">Sign up</a>
-
+                            <a href="{{route('user.login')}}" class="ml-4 btn btn-dark mt-1 btn-3">Daxil ol</a>
+                            <a href="{{route('user.register')}}" class="ml-4 btn btn-dark mt-1 btn-3">Qeydiyyat</a>
                             @endif
-                       
-                          
                         </li>
                     </div>
                   </div>
                </nav>
-            </div>
          </div>

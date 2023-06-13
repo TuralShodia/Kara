@@ -8,7 +8,7 @@
         <hr>
         <div class="card">
             <div class="card-header text-center">
-                <h2 class="card-title">About Us</h2> 
+                <h2 class="card-title">Haqqımızda</h2> 
             </div>
             <div class="card-body">
                 <div class="blog-media">

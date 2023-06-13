@@ -16,14 +16,17 @@ use App\Http\Requests\RegisterRequest;
 class UserController extends Controller
 {
     public function index(){
-        $users= User::where('role_id',1)->get();
+        $users= User::get();
         return view('admin/user/index',compact('users'));
     }
+
     public function edit($id)
     {
         $user=User::findOrFail($id);
+
         return view('admin/user/update',compact('user'));
     }
+    
     public function update($id, UserRequest $req){
 
         $user = User::find($id);
