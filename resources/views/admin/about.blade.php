@@ -60,7 +60,7 @@
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Image</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <img src="{{asset($about->image)}}">
+                                            <img src="{{asset($about->image)}}" height="150px" width="200px">
                                             <input type="file" name="image" value="{{$about->image}}"  class="form-control p-0 border-0" name="phone2" id="example-email">
                                         </div>
                                     </div>

@@ -50,9 +50,7 @@ class BookController extends Controller
         return view('admin/books/update',compact('book','categories'));
     }
 
-    public function update($id, BookUpdateRequest $req)
-    {
-        
+    public function update($id, BookUpdateRequest $req){ 
     try {   
         $data=$req->all();
         $books=Book::findOrFail($id);
@@ -74,10 +72,6 @@ class BookController extends Controller
             $fileNamewithUpload = "book/".$filename;
             $req->image->move('book'  , $filename);
             $data['image']=$fileNamewithUpload;
-            // if(File::exists($books->image))
-            // {
-            //     File::delete($books->image);
-            // } }
             $books->update(['image'=>$data['image']]);
         
         }
@@ -86,8 +80,8 @@ class BookController extends Controller
             report($e);
             return false;
             }
-        
     }
+
     public function delete($id)
     {
         $books=Book::findOrFail($id);
@@ -96,6 +90,6 @@ class BookController extends Controller
                 File::delete($books->image);
             }
         $books->delete();
-        return redirect()->route('book')->with('success','Book Deleted Successfully');;
+        return redirect()->route('book')->with('success','Book Deleted Successfully');
     }
 }

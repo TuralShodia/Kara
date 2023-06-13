@@ -17,7 +17,7 @@
                         <h6 class="card-title mb-4">Yazıçı:{{$book->writer}}</h6> 
                         <h6 class="card-title mb-4">Dil:{{$book->language}}</h6>
                         <h6 class="card-title mb-4">Kategoriya:{{$book->category}}</h6>
-                        <h6 class="card-title mb-4">Il:{{$book->year}}</h6>
+                        <h6 class="card-title mb-4">İl:{{$book->year}}</h6>
                         <h6 class="card-title mb-4">{{$book->pages}} pages</h6>
                     </div>
                     <div class="card-body border-top">

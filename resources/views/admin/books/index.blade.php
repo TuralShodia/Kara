@@ -99,7 +99,6 @@
                                                 @endif
                                             </select>
                                     </div>
-                                    
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
                                             <button type="submit" class="btn btn-success">Add book</button>

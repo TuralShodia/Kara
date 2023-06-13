@@ -13,8 +13,8 @@
                 <div class="carousel-item @if($loop->first) active @endif" >
                     <img class="d-block w-100" src="{{$slider->image}}" alt="First slide" style="height: 600px;width:2000px">
                     <div class="carousel-caption d-none d-md-block">
-                        <h1 style="color: black;font-size: 100px">{{$slider->name}}</h1>
-                        <p style="color: black;font-size: 20px">{!!$slider->description!!}</p>
+                        <h1 style="color: rgb(82, 6, 246);font-size: 100px">{{$slider->name}}</h1>
+                        <p style="color: rgb(25, 0, 255);font-size: 20px"> {!!$slider->description!!} </p>
                     </div>                    
                 </div>
             @endforeach
@@ -63,16 +63,18 @@
                     </div>
                 @endforeach
               </div>
-           </div>
+                <a href="{{route('front.news')}}" class="btn btn-primary btn-block my-4" type="submit">Bütün Xəbərlər</a>
+            </div>
         </div>            
     </div>
     @endif
 
-    <hr>
 
     @if ($books->count()>0)
     <div class="container">
         <div class="blog_section layout_padding">
+        <h1 class="services_taital">Kitablar</h1>
+
             <div class="page-content">
                 <hr>
                 <div class="row">    
@@ -108,7 +110,7 @@
             @foreach ($testimonials as $testimonial)
             <div class="carousel-item @if($loop->first) active @endif">
                 <div class="container">
-                <h1 class="client_taital">Istifadəçi rəyləri</h1>
+                <h1 class="client_taital">İstifadəçi rəyləri</h1>
                 <div class="client_container">
                     <div class="client_left">
                         <div><img src="{{$testimonial->image}}" class="client_img" height="100px" width="200px"></div>
