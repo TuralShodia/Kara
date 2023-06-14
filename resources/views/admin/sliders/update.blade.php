@@ -38,7 +38,7 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action='{{route('book.update',$book->id)}}' enctype="multipart/form-data" class="form-horizontal form-material">
+                                <form method="POST" action='{{route('slider.update',$slider->id)}}' enctype="multipart/form-data" class="form-horizontal form-material">
                                     @csrf
                                     @if(session()->has('success'))
                                         <div class="alert alert-success">
@@ -49,24 +49,24 @@
                                     <div class="alert alert-danger">
                                         {{ session()->get('errors') }}
                                     </div>
-                                    @endif 
+                                    @endif
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Image</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <img style="width: 80px" src="{{asset($book->image)}}">
+                                            <img style="width: 80px" src="{{asset($slider->image)}}">
                                             <input type="file"  name="image" class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <div>
                                         <label  class="col-md-12 p-0">Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text"   value="{{$book->name}}"  class="form-control p-0 border-0" name="name" >
+                                            <input type="text"   value="{{$slider->name}}"  class="form-control p-0 border-0" name="name" >
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label  class="col-md-12 p-0">Description</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <textarea name="description" id="" cols="30" rows="10">{{$book->description}}</textarea>
+                                            <textarea name="description" id="" cols="30" rows="10">{{$slider->description}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">

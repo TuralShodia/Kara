@@ -8,7 +8,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Casinal</title>
+      <title>Aviasiya Kitabxanası</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -28,7 +28,7 @@
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- fonts -->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
-      <!-- owl stylesheets --> 
+      <!-- owl stylesheets -->
       <link rel="stylesheet" href="{{asset('front/css/owl.carousel.min.css')}}">
       <link rel="stylesheet" href="{{asset('front/css/owl.theme.default.min.css')}}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -43,7 +43,7 @@
                   <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav">                     
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('home')}}">Ana Səhifə</a>
                         </li>
@@ -63,7 +63,7 @@
                         @if (Auth::user()->role_id==1)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('front.orders',Auth::id())}}">Sifarişlər</a>
-                            </li> 
+                            </li>
                         @endif
                         @endauth
                     </ul>

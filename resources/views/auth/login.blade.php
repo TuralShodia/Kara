@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Aviasiya Kitabxanası Admin Paneli</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('log/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
@@ -43,10 +43,10 @@
                                 <button type="submit"  class="form-submit" value="Log in">Log in </button>
                             </div>
                             @if (session('danger'))
-                               <div style="color: red">{{session('danger')}}</div> 
+                               <div style="color: red">{{session('danger')}}</div>
                             @endif
                         </form>
-   
+
                     </div>
                 </div>
             </div>
