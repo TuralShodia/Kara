@@ -8,7 +8,8 @@ use App\Models\{About, Book, Category, News,Message, Slider, Testimonial};
 
 class FrontController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $about=About::first();
         $news=News::skip(0)->take(2)->get();
         $books = Book::skip(0)->take(4)->get();
@@ -17,18 +18,19 @@ class FrontController extends Controller
 
         return view('front.index', compact('books','news','about','sliders','testimonials'));
     }
+
     public function books(){
         $books=Book::all();
         $categories = Category::query()->get();
 
-        return view('front.books',compact('books','categories')); 
+        return view('front.books',compact('books','categories'));
     }
 
     public function category($id){
         $books=Book::query()->where('category_id','=',$id)->get();
         $categories = Category::query()->get();
 
-        return view('front.books',compact('books','categories')); 
+        return view('front.books',compact('books','categories'));
     }
     public function booksSingle($id){
         $book=Book::findOrFail($id);
@@ -36,15 +38,15 @@ class FrontController extends Controller
     }
     public function news(){
         $news=News::all();
-        return view('front.news',compact('news')); 
-    } 
+        return view('front.news',compact('news'));
+    }
     public function newsSingle($id){
         $news=News::findOrFail($id);
         return view('front.news-single',compact('news'));
     }
     public function message(){
         $messages=Message::all();
-        return view('front.message',compact('messages')); 
+        return view('front.message',compact('messages'));
     }
     public function about(){
         $about=About::first();
@@ -67,11 +69,11 @@ class FrontController extends Controller
     //         'email' => 'required|email',
     //         'password' => 'required'
     //     ]);
-        
+
     //     $user = User::create(request(['name', 'email', 'password']));
-        
+
     //     auth()->login($user);
-        
+
     //     return redirect()->route('dashboard');
 //}
 }
