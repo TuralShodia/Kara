@@ -108,12 +108,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12"style="width:1200px">
                         <div class="white-box">
                             <h3 class="box-title">books</h3>
                             <p class="text-muted">Add class <code>.table</code></p>
                             <div class="table-responsive">
-                                <table class="table text-nowrap">
+                                <table class="table text-nowrap" >
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">Image</th>
