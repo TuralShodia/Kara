@@ -119,9 +119,7 @@
                                             <th class="border-top-0">Image</th>
                                             <th class="border-top-0">Name</th>
                                             <th class="border-top-0">Writer</th>
-                                            <th class="border-top-0">Language</th>
                                             <th class="border-top-0">Year</th>
-                                            <th class="border-top-0">Pages</th>
                                             <th class="border-top-0">Category</th>
                                             <th class="border-top-0">Action</th>
  
@@ -135,9 +133,7 @@
                                             <td><img style="width: 80px" src="{{asset($book->image)}}"></td>
                                             <td>{{$book->name}}</td>
                                             <td>{{$book->writer}}</td>
-                                            <td>{{$book->language}}</td>
                                             <td>{{$book->year}}</td>
-                                            <td>{{$book->pages}}</td>
                                             @if ($book->category_id!=0)
                                               <td>{{$book->category->name}}</td> 
                                             @else
