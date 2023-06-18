@@ -16,9 +16,9 @@ class MessageController extends Controller
         $body=$req->message;
         $phone=$req->phone;
         $surname=$req->surname;
-        Mail::send ("front.mail", ['body'=> $body,'subject'=>$subject,'email'=>$email,'phone'=>$phone,'surname'=>$surname], function ($message) use ($email,$subject) {
-            $message->to(env('MAIL_USERNAME'))->subject ($subject);
-        });
+        // Mail::send ("front.mail", ['body'=> $body,'subject'=>$subject,'email'=>$email,'phone'=>$phone,'surname'=>$surname], function ($message) use ($email,$subject) {
+        //     $message->to(env('MAIL_USERNAME'))->subject ($subject);
+        // });
         return redirect()->back()->with('success','Message Sent Successfully');
     }public function index(){
         $messages=Message::all();
